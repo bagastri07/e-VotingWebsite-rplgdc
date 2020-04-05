@@ -11,8 +11,17 @@ router.get('/mahasiswa', (req, res) => {
     if(req.query.nama) {
         whereQuery = "WHERE nama_Mahasiswa = '"+req.query.nama+"'"
     }
-    //let queryString = "SELECT data_mahasiswa.nama_Mahasiswa AS Nama, data_jurusan.nama_Jurusan AS Jurusan FROM data_Mahasiswa LEFT JOIN data_jurusan ON data_mahasiswa.id_Jurusan = data_jurusan.id_Jurusan"
-    db.query('SELECT * FROM data_mahasiswa ' + whereQuery, (err, results) => {
+    let queryString = `
+    SELECT data_mahasiswa.nama_mahasiswa AS nama,
+    data_mahasiswa.jenis_Kelamin,
+    data_mahasiswa.angkatan,
+    data_jurusan.nama_Jurusan AS Jurusan
+    FROM data_mahasiswa
+    LEFT JOIN data_jurusan ON data_mahasiswa.id_Jurusan = data_jurusan.id_Jurusan
+    `;
+    
+    
+    db.query(queryString + whereQuery, (err, results) => {
         if(err) {
             res.json({status: err})
         } else {

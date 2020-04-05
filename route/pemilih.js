@@ -10,7 +10,7 @@ router.get('/pemilih', (req, res) => {
     }
 
     let queryString = `
-    SELECT data_pemilih.id_Mahasiswa,
+    SELECT data_pemilih.id_Mahasiswa AS NIM,
     data_token.Token AS Token,
     data_token.Status AS Status
     FROM data_pemilih
