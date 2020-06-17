@@ -3,7 +3,7 @@ const db_config = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'e-votingwebsite'
+    database: 'e-voteweb'
 }
 
 var con = mysql.createConnection(db_config)
