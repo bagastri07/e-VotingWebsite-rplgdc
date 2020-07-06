@@ -1,23 +1,21 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const path = require('path')
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: false}))
 
-const fakultas = require('./route/fakultas')
-const jurusan = require('./route/jurusan')
-const mahasiswa = require('./route/mahasiswa')
-const pemilih = require('./route/pemilih')
+const publicDirectory = path.join(__dirname, './public')
+app.use(express.static(publicDirectory))
 
-app.use(fakultas)
-app.use(jurusan)
-app.use(mahasiswa)
-app.use(pemilih)
+app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-    res.send('Server Running')
-}) 
+
+//for the all pages route
+app.use('/', require('./routes/pages/pages')) 
+app.use('/auth', require('./routes/auth')) 
+app.use('/API', require('./routes/API/api-config'))
 
 app.listen(8888, () => {
     console.log('Server is running on port 8888')
