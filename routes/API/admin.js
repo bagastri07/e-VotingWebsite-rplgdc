@@ -3,7 +3,24 @@ const router = express.Router()
 const db = require('../../conn')
 const request = require('request')
 const bcrypt = require("bcrypt")
+const passport = require('passport')
 
+const initPassport = require('../../controller/auth-admin-passport-config')
+const con = require('../../conn')
+
+// function getUserByStudentId(NIM) {
+//     db.query('SELECT * FROM data_admin WHERE id_mahasiswa = ?', [NIM], (err, result) => {
+        
+//         if (!result) {
+//             return null
+//         } else {
+//             let data = JSON.parse(JSON.stringify(result[0]))
+//             console.log(data)
+//             return data
+//         }
+//     })
+// }
+// getUserByStudentId('1301194051')
 
 router.get('/admin', (req, res) => {
     res.send('testing')

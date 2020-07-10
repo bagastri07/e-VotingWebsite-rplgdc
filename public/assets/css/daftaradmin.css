@@ -1,0 +1,144 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    background-color: #F6F7FC;
+}
+#sidebar .navbar-brand img {
+    height: 50px;
+    float: left;
+    margin: -80px 70px 0px 15px;
+}
+
+#sidebar {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #292b2c;
+    left: -300px;
+    transition: all 500ms linear;
+}
+
+#sidebar.active {
+    left: 0px;
+}
+
+#sidebar ul li {
+    color:7E8DA4;
+    list-style: none;
+    padding: 15px 10px;
+}
+
+#sidebar .toggle-btn {
+    position: absolute;
+    left: 330px;
+    top: 10px;
+}
+
+#sidebar .toggle-btn span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #5E738D;
+    margin: 5px 0px;
+}
+
+#sidebar .adminsection {
+    position: relative;
+    left: 315px;
+    top: 50px;
+    transition: all 500ms linear;
+}
+
+#sidebar.active .adminsection {
+    left: 315px;
+}
+
+#sidebar .adminsection h4 {
+    color: #7E8DA4;
+}
+
+#sidebar .table {
+    position: absolute;
+    left: 465px;
+    top: 130px;
+    width: 1100px;
+    transition: all 500ms linear;
+}
+
+#sidebar.active .table {
+    left: 330px;
+}
+
+#sidebar .tabhead {
+    background-color: #8971D0;
+    color: whitesmoke;
+    text-align: center;
+}
+
+#sidebar tbody {
+    font-size: 16px;
+    text-align: center;
+}
+
+#sidebar .tr1 {
+    background-color: whitesmoke;
+    color: #5E738D;
+}
+
+#sidebar .tr2 {
+    background-color: rgba(221, 214, 241, 0.918);
+    color: #5E738D;
+}
+
+#content .superadm-btn {
+    position: absolute;
+    left: 1250px;
+    top: 10px;
+    transition: all 500ms linear;
+    font-size: small;
+}
+
+#content .superadm-btn img {
+    position: absolute;
+    top: 0px;
+    height: 35px;
+}
+
+#content .superadm-btn .superadmalt {
+
+    width: 100px;
+    left: 50px;
+    font-size: 15px;
+    position: absolute;
+    top: 8px;
+    color: grey;
+}
+
+
+#sidebar.active .superadm-btn {
+    left: 1250px;
+}
+
+ul li a {
+    margin-left: 15px;
+    font-size: 15px;
+    color: #7E8DA4;
+}
+
+li img {
+    margin-left: 10px;
+    height: 23px;
+}
+
+#content .container-fluid {
+    width: 100%;
+    height: 60px;
+}
+
+#sidebar ul li a:hover {
+    color: whitesmoke;
+}
+

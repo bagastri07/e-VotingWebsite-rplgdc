@@ -1,0 +1,249 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    background-color: #F6F7FC;
+}
+#sidebar .navbar-brand img {
+    height: 50px;
+    float: left;
+    margin: -80px 70px 0px 15px;
+}
+
+#sidebar {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #292b2c;
+    left: -300px;
+    transition: all 500ms linear;
+}
+
+#sidebar.active {
+    left: 0px;
+}
+
+#sidebar ul li {
+    color:7E8DA4;
+    list-style: none;
+    padding: 15px 10px;
+}
+
+#sidebar .toggle-btn {
+    position: absolute;
+    left: 330px;
+    top: 10px;
+}
+
+#sidebar .toggle-btn span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #5E738D;
+    margin: 5px 0px;
+}
+
+#sidebar .detailevent {
+    position: absolute;
+    width: fit-content;
+    left: 900px;
+    top: 100px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+}
+
+#sidebar .detailevent h3 {
+    color: #7E8DA4;
+    margin: -10px 0px 0px -45px;
+    width: 250px;
+    font-weight: bolder;
+    /* border: 1px solid black; */
+}
+
+#sidebar .detailevent p {
+    color: #7E8DA4;
+    margin: 5px 5px 0px -30px;
+    width: 250px;
+    /* border: 1px solid black; */
+}
+
+#sidebar.active .detailevent {
+    left: 830px;
+}
+
+#sidebar .detailevent img {
+    height: 160px;
+}
+
+#sidebar .progress {
+    position: relative;
+    width: 850px;
+    left: 600px;
+    top: 340px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+    /* background-color: #5c4d82 !important; */
+}
+
+#sidebar.active .progress-detail {
+    left: 350px;
+}
+
+#sidebar .progress-detail {
+    position: relative;
+    width: 150px;
+    left: 450px;
+    top: 319px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+}
+
+#sidebar .progress-detail p {
+    font-weight: bold;
+    color: #7E8DA4;
+}
+
+#sidebar .vote-detail {
+    position: absolute;
+    width: 350px;
+    left: 850px;
+    top: 419px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+}
+
+#sidebar .vote-detail h2 {
+    color: #7E8DA4;
+    font-weight: bolder;
+}
+
+#sidebar .vote-detail h6 {
+    width: 200px;
+    margin: 290px 0px 0px 75px;
+    color: #7E8DA4;
+    font-weight: bolder;
+}
+
+#sidebar.active .vote-detail {
+    left: 780px;
+}
+
+
+#sidebar.active .progress {
+    left: 500px;
+}
+
+#sidebar .paslon1-detail {
+    position: absolute;
+    width: 350px;
+    left: 600px;
+    top: 419px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+}
+
+#sidebar .paslon1-detail img {
+    height: 120px;
+}
+
+#sidebar.active .paslon1-detail {
+    left: 500px;
+}
+
+#sidebar .paslon h3 {
+    font-weight: bolder;
+    color: #7E8DA4;
+}
+
+#sidebar .paslon1-detail h3 {
+    /* border: 1px solid black; */
+    width: 20px;
+    margin : 0px 0px 25px 50px;
+}
+
+#sidebar .paslon2-detail {
+    position: absolute;
+    width: 350px;
+    left: 1320px;
+    top: 419px;
+    /* border: 1px solid black; */
+    transition: all 500ms linear;
+}
+
+#sidebar .paslon2-detail img {
+    height: 120px;
+}
+
+#sidebar.active .paslon2-detail {
+    left: 1220px;
+}
+
+#sidebar .paslon h3 {
+    /* border: 1px solid black; */
+    width: 20px;
+    margin : 0px 0px 25px 50px;
+}
+
+#sidebar .paslon p {
+    font-weight: bolder;
+    color: #7E8DA4;
+    font-size: 28px;
+}
+
+#sidebar .paslon p {
+    width: 110px;
+    /* border: 1px solid black; */
+    margin: 20px 0px 0px 5px;
+}
+
+#content .superadm-btn {
+    position: absolute;
+    left: 1250px;
+    top: 10px;
+    transition: all 500ms linear;
+    font-size: small;
+}
+
+#content .superadm-btn img {
+    position: absolute;
+    top: 0px;
+    height: 35px;
+}
+
+#content .superadm-btn .superadmalt {
+
+    width: 100px;
+    left: 50px;
+    font-size: 15px;
+    position: absolute;
+    top: 8px;
+    color: grey;
+}
+
+
+#sidebar.active .superadm-btn {
+    left: 1250px;
+}
+
+ul li a {
+    margin-left: 15px;
+    font-size: 15px;
+    color: #7E8DA4;
+}
+
+li img {
+    margin-left: 10px;
+    height: 23px;
+}
+
+#content .container-fluid {
+    width: 100%;
+    height: 60px;
+}
+
+#sidebar ul li a:hover {
+    color: whitesmoke;
+}
+

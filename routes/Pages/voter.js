@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../conn')
-const request = require('request')
+
+const initializePassport = require('../../controller/auth-admin-passport-config')
 
 router.get('/', (req, res) => {
     res.render('login-pemilih')

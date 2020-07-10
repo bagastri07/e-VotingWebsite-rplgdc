@@ -1,10 +1,12 @@
 const mysql = require('mysql')
+
 const db_config = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'e-votingwebsite'
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PWD,
+    database: process.env.DATABASE
 }
+
 
 var con = mysql.createConnection(db_config)
 
