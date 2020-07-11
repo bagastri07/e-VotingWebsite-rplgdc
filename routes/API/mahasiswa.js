@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../../conn')
+const db = require('../../database/conn')
 const request = require('request')
 
 router.get('/mahasiswa', (req, res) => {

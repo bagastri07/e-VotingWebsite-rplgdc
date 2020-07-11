@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../../conn')
+const db = require('../../database/conn')
 const request = require('request')
 const bcrypt = require("bcrypt")
 const passport = require('passport')
 
 const initPassport = require('../../controller/auth-admin-passport-config')
-const con = require('../../conn')
+const con = require('../../database/conn')
 
 // function getUserByStudentId(NIM) {
 //     db.query('SELECT * FROM data_admin WHERE id_mahasiswa = ?', [NIM], (err, result) => {

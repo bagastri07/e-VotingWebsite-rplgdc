@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../../conn')
+const db = require('../../database/conn')
 const passport = require('passport')
 
 const initializePassport = require('../../controller/auth-admin-passport-config')
@@ -18,6 +18,7 @@ router.post('/auth/login', passport.authenticate('local', {
 
 router.get('/dasboard', (req, res) => {
     res.send('ok')
+    console.log(req.user)
 })
 
 

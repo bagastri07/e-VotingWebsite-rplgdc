@@ -1,6 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
-const db = require('../conn')
+const db = require('../database/conn')
 
 function getUserById(id) {
     return new Promise((resolve, reject) => {
@@ -8,7 +8,16 @@ function getUserById(id) {
             if(err) {
                 console.log(err)
             } else {
-                resolve(result[0].id_Admin)
+                var data = {
+                    id: result[0].id_Admin,
+                    email: result[0].email,
+                    jabatan: result[0].jabatan,
+                    password: result[0].password,
+                    id_mahasiswa: result[0].id_mahasiswa,
+                    id_Acara: result[0].id_Acara,
+                    id_Organisasi: result[0].id_Organisasi
+                }
+                resolve(data)
             }
         })
     })
@@ -38,7 +47,6 @@ function getUserByStudentId(NIM) {
 function initialize(passport) {
   const authenticateUser = async (NIM, password, done) => {
     const user = await getUserByStudentId(NIM)
-    console.log(user)
     if (user == null) {
         return done(null, false, { message: 'Student Id Inccoret' })
     } else {         
@@ -56,8 +64,11 @@ function initialize(passport) {
 
   passport.use(new LocalStrategy({ usernameField: 'NIM' }, authenticateUser))
   passport.serializeUser((user, done) => done(null, user.id))
-  passport.deserializeUser((id, done) => {
-    done(null,getUserById(id))
+  passport.deserializeUser( (id, done) => {
+    getUserById(id).then((result) => {
+        return done(null, result)
+    })
+    //return done(null, getUserById(id))
   })
 }
 

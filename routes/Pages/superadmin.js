@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../../conn')
+const db = require('../../database/conn')
 const passport = require('passport')
 
-const initializePassport = require('../../controller/auth-admin-passport-config')
-initializePassport(passport)
+const initializePassport = require('../../controller/auth-superadmin-passport-config')
+//initializePassport(passport)
 
 router.get('/', (req, res) => {
     res.render('login-super-admin')
