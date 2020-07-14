@@ -11,7 +11,7 @@ function getUserById(id) {
                 var data = {
                     id: result[0].id_Admin,
                     email: result[0].email,
-                    jabatan: result[0].jabatan,
+                    role: result[0].jabatan,
                     password: result[0].password,
                     id_mahasiswa: result[0].id_mahasiswa,
                     id_Acara: result[0].id_Acara,
@@ -32,7 +32,7 @@ function getUserByStudentId(NIM) {
                 var data = {
                     id: result[0].id_Admin,
                     email: result[0].email,
-                    jabatan: result[0].jabatan,
+                    role: result[0].jabatan,
                     password: result[0].password,
                     id_mahasiswa: result[0].id_mahasiswa,
                     id_Acara: result[0].id_Acara,

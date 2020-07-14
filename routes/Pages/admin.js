@@ -11,15 +11,24 @@ router.get('/', (req, res) => {
 })
 
 router.post('/auth/login', passport.authenticate('local', {
-    successRedirect: '/adm/dasboard',
+    successRedirect: '/adm/dashboard',
     failureRedirect: '/adm',
     failureFlash: true
 }))
 
-router.get('/dasboard', (req, res) => {
-    res.send('ok')
+
+router.get('/dashboard', checkIsAdmin, (req, res) => {
+    res.render('dashboard-admin')
     console.log(req.user)
 })
+
+function checkIsAdmin (req, res, next) {
+    if(req.user) {
+        return next()
+    } else {
+        res.redirect('/')
+    }
+}
 
 
 module.exports = router
