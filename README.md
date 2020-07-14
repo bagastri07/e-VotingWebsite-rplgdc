@@ -11,4 +11,4 @@
 >- Enjoy it!
 
 #### Current View
->- **COMING SOON** :satisfied
+>- **COMING SOON** :sweat_smile:
