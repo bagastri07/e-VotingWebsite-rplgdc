@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../database/conn')
-const request = require('request')
 
 router.get('/fakultas', (req, res) => {
     db.query('SELECT * FROM data_fakultas ', (err, results) => {

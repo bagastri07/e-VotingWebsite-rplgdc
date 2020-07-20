@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../database/conn')
-const request = require('request')
+
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {

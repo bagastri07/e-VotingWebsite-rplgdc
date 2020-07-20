@@ -2,6 +2,8 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 const db = require('../database/conn')
 
+const Authentication = require('../middleware/auth-jwt')
+
 function getUserById(id) {
     return new Promise((resolve, reject) => {
         db.query('SELECT * FROM data_admin WHERE id_Admin = ?', [id], (err,result) => {
@@ -52,9 +54,12 @@ function initialize(passport) {
     } else {         
         try {
             if (await bcrypt.compare(password, user.password)) {
-              return done(null, user)
+                //to get AccesToken and RefreshToken
+                //Authentication.getToken(user)
+
+                return done(null, user)
             } else {
-              return done(null, false, { message: 'Password Inccoret' })
+                return done(null, false, { message: 'Password Inccoret' })
             }
         } catch (e) {
             return done(e)

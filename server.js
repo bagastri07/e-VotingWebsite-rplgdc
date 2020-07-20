@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('express-flash')
 const passport = require('passport')
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.set('view engine', 'ejs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(cookieParser())
 
 //express session config
 app.use(session({
@@ -36,6 +38,7 @@ app.use(flash())
 
 //set Static File
 app.use(express.static(__dirname + '/public'))
+
 
 //for the all pages route 
 //app.use(subdomain('/admin', require('./routes/Pages/admin')))

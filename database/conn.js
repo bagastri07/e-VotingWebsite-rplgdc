@@ -13,8 +13,9 @@ var con = mysql.createConnection(db_config)
 con.connect((err) => {
     if(err) {
         console.log('error connecting to database:' + err.stack)
+    } else {
+        console.log('Connected as id ' + con.threadId)
     }
-    console.log('Connected as id ' + con.threadId)
 })
 
 module.exports = con
