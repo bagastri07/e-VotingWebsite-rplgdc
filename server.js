@@ -39,13 +39,10 @@ app.use(flash())
 //set Static File
 app.use(express.static(__dirname + '/public'))
 
-
 //for the all pages route 
-//app.use(subdomain('/admin', require('./routes/Pages/admin')))
 app.use('/', require('./routes/Pages/voter')) 
 app.use('/super', require('./routes/Pages/superadmin'))
-app.use('/adm', require('./routes/Pages/admin'))
-app.use('/API', require('./routes/API/api-config'))
+app.use('/api', require('./routes/API/api-config'))
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port)
