@@ -4,6 +4,7 @@ const db = require('../../database/conn')
 const Authentication = require('../../middleware/auth-jwt')
 
 router.get('/admin', Authentication.Token, (req, res) => {
+    res.cookie('te', 'te')
     res.json({
         name : 'Bagas Tri Wibowo (Admin)'
     })

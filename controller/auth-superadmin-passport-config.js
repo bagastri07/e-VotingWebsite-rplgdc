@@ -17,7 +17,7 @@ function getSuperAdminById(id) {
 
 function getSuperAdmin(username, password) {
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:8888/api/auth/sa/login', {
+        axios.post('http://localhost:8888/auth/sa/login', {
         username: username,
         password: password
       })

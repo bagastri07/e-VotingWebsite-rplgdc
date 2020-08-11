@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('express-flash')
 const passport = require('passport')
-const subdomain = require('express-subdomain')
 
 //Port we gonna use
 const port = 8888
@@ -43,6 +42,7 @@ app.use(express.static(__dirname + '/public'))
 app.use('/', require('./routes/Pages/voter')) 
 app.use('/super', require('./routes/Pages/superadmin'))
 app.use('/api', require('./routes/API/api-config'))
+app.use('/auth/sa', require('./auth/auth-superadmin-jwt-config'))
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port)

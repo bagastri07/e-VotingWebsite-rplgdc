@@ -15,6 +15,4 @@ router.use(mahasiswa)
 router.use(pemilih)
 router.use(admin)
 
-router.use('/auth/sa', require('../../auth/auth-superadmin-jwt-config'))
-
 module.exports = router
