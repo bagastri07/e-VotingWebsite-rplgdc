@@ -2,46 +2,49 @@ const express = require('express')
 const router = express.Router()
 const db = require('../../database/conn')
 const passport = require('passport')
-const getToken = require('../../controller/jwt-controller')
 const axios = require('axios')
+const jwtController = require('../../controller/jwt-controller')
 
 const initializePassport = require('../../controller/auth-admin-passport-config')
 const { get } = require('../API/admin')
+const con = require('../../database/conn')
 initializePassport(passport)
 
 router.get('/', (req, res) => {
     res.render('login-admin')
 })
 
-router.post('/auth/login', passport.authenticate('local', {
+router.post('/auth/login', passport.authenticate('admin', {
     failureRedirect: '/adm',
     failureFlash: true
 }), (req, res) => {
-    
-    axios.post('http://localhost:8888/api/login', {
-        email: req.user.email,
-        role: req.user.role
-      })
-      .then((response) => {
-        var data = {
-            accessToken: response.data.accessToken,
-            refreshToken: response.data.refreshToken
-        }
-        res.cookie('auth', data.accessToken, {httpOnly: true})
-        res.cookie('refresh', data.refreshToken, {httpOnly: true})
+    //Get Access and RefreshToken
+    jwtController.getToken(req.user).then((result) => {
+        res.cookie('auth', result.accessToken, {httpOnly: true, overwrite: true, maxAge: 900000})
+        res.cookie('ref', result.refreshToken, {httpOnly: true, overwrite: true})
         res.redirect('/adm/dashboard')
-      }, (error) => {
-        console.log(error);
-      });
+    })
+
 })
 
 router.get('/auth/logout', (req, res) => {
     req.logOut()
-    //req.flash('error', "te")
     res.redirect('/adm')
 })
 
 router.get('/dashboard', checkIsAdmin, (req, res) => {
+    console.log(req.cookies.auth)
+    axios.get('http://localhost:8888/api/admin', {
+        headers: {
+            'authorization': 'Bearer ' + req.cookies.auth
+        }})
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
     const name = req.user.id_mahasiswa + ' (' + req.user.role + ')'
     res.render('dashboard-admin', {name: name})
     //console.log(req.user.email)

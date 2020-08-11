@@ -67,7 +67,7 @@ function initialize(passport) {
     }
   }
 
-  passport.use(new LocalStrategy({ usernameField: 'NIM' }, authenticateUser))
+  passport.use('admin' ,new LocalStrategy({ usernameField: 'NIM' }, authenticateUser))
   passport.serializeUser((user, done) => done(null, user.id))
   passport.deserializeUser( (id, done) => {
     getUserById(id).then((result) => {

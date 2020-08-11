@@ -41,7 +41,7 @@ router.post('/token', async (req, res) => {
 
 router.delete('/logout', (req, res) => {
     //delete the refresh token on the database
-    localStorage.setItem
+    
     let token = req.body.token
     let queryString = 'DELETE From data_refreshtoken WHERE refreshToken = ?'
     db.query(queryString, [token], (err, results) => {

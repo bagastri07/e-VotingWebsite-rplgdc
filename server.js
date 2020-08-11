@@ -43,7 +43,7 @@ app.use(express.static(__dirname + '/public'))
 //for the all pages route 
 //app.use(subdomain('/admin', require('./routes/Pages/admin')))
 app.use('/', require('./routes/Pages/voter')) 
-app.use('/sa', require('./routes/Pages/superadmin'))
+app.use('/super', require('./routes/Pages/superadmin'))
 app.use('/adm', require('./routes/Pages/admin'))
 app.use('/API', require('./routes/API/api-config'))
 
