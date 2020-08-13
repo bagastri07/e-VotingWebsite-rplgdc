@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/assets/css/sidebarpemilih.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/sidebarpemilih.css" />
+    <!-- Bootstrap & JS -->
+      <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="/assets/script/jquery.js"></script>
+      <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/assets/script/popper.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+    <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/assets/img/logofix.png" style="height: 50px;">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#"><ion-icon name="home-outline" class="col-1" style="height: 22px;"></ion-icon>Home</a>
+                </li>
+                <li>
+                    <a href="#"><ion-icon name="thumbs-up-outline" class="col-1" style="height: 22px;"></ion-icon>Vote</a>
+                </li>
+                <li>
+                    <a href="#"><ion-icon name="log-out-outline" class="col-1" style="height: 22px;"></ion-icon>Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $('#carouselCon').toggleClass('active');
+            $('#btnVote').toggleClass('active');
+        });
+    
+    });
+    </script>
