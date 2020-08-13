@@ -139,28 +139,18 @@ ul.CTAs a {
     transition: all 500ms linear;
 }
 
-#content .card {
-    left: 50px;
-    top: 10px;
-    border: none;
-
-}
-
-#content .cards li {
-    list-style: none;
-    display: inline-flex;
-    margin-right: 10px;
-}
-
-#content .cardAdd {
-    top: -110px;
-}
-
-.cardAdd h1 {
-    font-size: 80px;
-    color: #7E8DA4;
+#content .alert {
+    margin-left: 150px;
+    margin-top: 100px;
+    height: 150px;
+    width: 750px;
+    font-size: 26px;
+    font-weight: 150;
     text-align: center;
-    margin-top: 50px;
+}
+
+.alert .text-alert {
+    margin: 40px;
 }
 
 /* ---------------------------------------------------

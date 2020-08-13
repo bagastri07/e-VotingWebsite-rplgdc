@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../database/conn')
-const Authentication = require('../../middleware/auth-jwt')
+const verifyToken = require('../../auth/verify-token')
 
-router.get('/admin', Authentication.Token, (req, res) => {
-    res.cookie('te', 'te')
+router.get('/admin', verifyToken.superadmin, (req, res) => {
     res.json({
         name : 'Bagas Tri Wibowo (Admin)'
     })

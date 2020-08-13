@@ -22,8 +22,8 @@ router.post('/login', (req, res) => {
     }
 
     var token = jwt.sign({id: admin.id, role: 'superadmin'}, process.env.ACCESS_TOKEN_JWT, {expiresIn: "2h"})
-    // res.cookie('token', token, {httpOnly: true, maxAge: 72000})
-    res.status(200).json({auth: true, admin: admin, token: token})
+
+    res.status(200).json({auth: true, token: token})
 })
 
 router.post('/logout', function(req, res) {

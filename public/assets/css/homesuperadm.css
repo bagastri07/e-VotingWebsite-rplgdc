@@ -5,6 +5,8 @@
 
 html, body {
     background-color: #F6F7FC;
+    margin: 0px;
+    padding: 0px;
 }
 
 p {
@@ -56,6 +58,7 @@ a:focus {
     background: #292b2c;
     color: #fff;
     transition: all 0.3s;
+    z-index: 1;
 }
 
 #sidebar.active {
@@ -139,29 +142,148 @@ ul.CTAs a {
     transition: all 500ms linear;
 }
 
-#content .card {
-    left: 50px;
-    top: 10px;
-    border: none;
-
-}
-
-#content .cards li {
-    list-style: none;
+#carouselCon { 
+    /* width: 100%; */
+    height: auto;
+    margin-top: -40px;
+    margin-left: -15px;
     display: inline-flex;
-    margin-right: 10px;
+    /* border: 1px solid red; */
+    box-shadow: black;
+    transition: all 0.3s;
 }
 
-#content .cardAdd {
-    top: -110px;
+#carouselCon.active {
+    margin-left: 110px;
 }
 
-.cardAdd h1 {
-    font-size: 80px;
+.container1 {
+    padding-left: 20px;
+    padding-top: 20px;
+    width: 1160px;
+    height: 350px;
+    
+}
+
+.container2 {
+    padding-left: 20px;
+    padding-top: 20px;
+    width: 1160px;
+    height: 350px;
+    
+}
+
+#card-con {
+    transition: all 0.3s;
+}
+
+#card-con.active {
+    margin-left: 140px;
+}
+
+#content .cards-rule {
+    /* border: 1px solid red; */
+    margin-left: 20px;
+    width: 1140px;
+}
+
+#content .cards-rule li {
+    display: inline-flex;
+    padding-left: 25px;
+}
+
+#content .card-body p {
+    font-size: 20px;
+}
+
+#content .card {
+    border: none;
+}
+
+#content .card .card-title {
+    color: #5E738D;
+}
+
+#content .card p {
     color: #7E8DA4;
-    text-align: center;
-    margin-top: 50px;
+    font-size: 15px;
+    width: 280px;
+    margin-bottom: 20px;
 }
+
+.card1 .card-img-top {
+    margin: 25px 0px 0px 110px;
+}
+
+.card2 .card-img-top {
+    margin: 25px 0px 0px 110px;
+}
+
+.card3 .card-img-top {
+    margin: 25px 0px 0px 110px;
+}
+
+#content .head-project h3 {
+    color: #5E738D;
+    text-align: center;
+    width: 350px;
+    margin-left: 400px;
+    margin-top: 40px;
+}
+
+.mem-card .card-img-top {
+    margin: 30px 0px 0px 0px;
+}
+
+.mem-card .bagas h4 {
+    margin: -85px 0px 0px 85px;
+}
+
+.mem-card .rahma h4 {
+    margin: -85px 0px 0px 85px;
+}
+
+.card .rahma h4 {
+    margin: -85px 0px 0px 100px;
+}
+
+.card .rahma p {
+    margin: 10px 0px 0px 85px;
+}
+
+.card .risma h4 {
+    margin: -85px 0px 0px 110px;
+}
+
+.card .risma p {
+    margin: 10px 0px 0px 95px;
+}
+
+.mem-card p {
+    margin: 10px 0px 0px 70px;
+}
+
+#content .member-card {
+    /* border: 1px solid black; */
+    margin-left: 20px;
+    width: 1140px;
+
+}
+
+#content .member-card li {
+    padding-left: 10px;
+    display: inline-flex;
+    list-style: none;
+}
+
+
+
+
+/* .carousel-container.active {
+    margin-left: 100px;
+} */
+
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -174,10 +296,6 @@ ul.CTAs a {
     #sidebar.active {
         margin-left: 0;
     }
-    #sidebarCollapse span {
-        display: none;
-    }
-
     #sidebar .progress-bar {
         left: 10px;
     }

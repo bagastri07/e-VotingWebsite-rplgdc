@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { json } = require('body-parser')
 
-exports.Token = (req, res, next) => {
+exports.superadmin = (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401)
@@ -12,8 +11,12 @@ exports.Token = (req, res, next) => {
         return res.sendStatus(403)
       }
       req.token = user
-      next()
+      if (req.token.role == 'superadmin') {
+        return next()
+      } else{
+        return res.sendStatus(403)
+      }
     })
-  }
+}
 
-  
+

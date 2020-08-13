@@ -139,28 +139,76 @@ ul.CTAs a {
     transition: all 500ms linear;
 }
 
-#content .card {
-    left: 50px;
-    top: 10px;
-    border: none;
-
-}
-
-#content .cards li {
-    list-style: none;
-    display: inline-flex;
-    margin-right: 10px;
-}
-
-#content .cardAdd {
-    top: -110px;
-}
-
-.cardAdd h1 {
-    font-size: 80px;
+#content .headform {
+    left: 315px;
+    margin-top: -20px;
     color: #7E8DA4;
-    text-align: center;
-    margin-top: 50px;
+}
+
+#content .formadm {
+    border: 1px solid lightgray;
+    background-color: white;
+    width: 1080px;
+    height: 420px;
+    left: 480px;
+    margin-top: 30px;
+}
+
+#content .formadm {
+    left: 332px;
+}
+
+#content .formadm h6 {
+    margin: 20px 0px 0px 30px;
+    font-weight: 420;
+    color: #7E8DA4;
+}
+
+#content .form-group1 {
+    margin: 25px 0px 0px 100px;
+}
+
+#content .form-group2 {
+    margin: 25px 0px 0px 100px;
+}
+
+#content .form-group3 {
+    margin: 25px 0px 0px 100px;
+}
+
+#content .form-group4 {
+    margin: 25px 0px 0px 100px;
+}
+
+#content .form-group5 {
+    margin: 52px 0px 0px 850px;
+}
+
+#content .divide-row {
+    border-bottom: 1px solid lightgray;
+    width: 1010px;
+    margin: 13px 0px 0px 30px;
+}
+
+#content .form-group7 button {
+    margin-left: 15px;
+    background-color: #8971D0;
+    color: whitesmoke;
+}
+
+.col-form-label {
+    color: #7E8DA4;
+}
+#prevBtn {
+    margin-left: 15px;
+    background-color: rgba(109, 125, 146, 0.6);
+    color: white;
+}
+
+#submitEvt {
+    margin-left: 15px;
+    background-color: #5E738D;
+    color: white;
 }
 
 /* ---------------------------------------------------

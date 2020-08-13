@@ -139,28 +139,26 @@ ul.CTAs a {
     transition: all 500ms linear;
 }
 
-#content .card {
-    left: 50px;
-    top: 10px;
-    border: none;
-
+#content .container {
+    border: 1px solid lightgray;
+    background-color: white;
+    width: 640px;
+    height: 560px;
+    left: 690px;
+    margin-top: 85px;
+    transition: all 500ms linear;
 }
 
-#content .cards li {
-    list-style: none;
-    display: inline-flex;
-    margin-right: 10px;
+.detailevt {
+    
+    margin: 40px 50px 0px 140px;
+    font-size: 18px;
+    color: #5E738D;
 }
 
-#content .cardAdd {
-    top: -110px;
-}
-
-.cardAdd h1 {
-    font-size: 80px;
-    color: #7E8DA4;
-    text-align: center;
-    margin-top: 50px;
+.container img {
+    height: 250px;
+    margin: 10px 0px -30px 160px;
 }
 
 /* ---------------------------------------------------

@@ -139,28 +139,85 @@ ul.CTAs a {
     transition: all 500ms linear;
 }
 
-#content .card {
-    left: 50px;
-    top: 10px;
-    border: none;
-
+#content .headform {
+    margin-left: 15px;
+    margin-top: -30px;
 }
 
-#content .cards li {
-    list-style: none;
-    display: inline-flex;
-    margin-right: 10px;
+#content .headform h4 {
+    color: #5E738D;
 }
 
-#content .cardAdd {
-    top: -110px;
+#content .formAdd {
+  
+    border: 1px solid lightgray;
+    background-color: white;
+    width: 1110px;
+    height: 150px;
+    margin-left: 30px;
+    margin-top: 30px;
+    transition: all 500ms linear;
 }
 
-.cardAdd h1 {
-    font-size: 80px;
-    color: #7E8DA4;
+ion-icon {
+    font-size: 16px;
+    
+}
+
+.addBtn button {
+    background-color: #8971D0;
+    color: white;
+    font-size: 13px;
+    width: 100px;
+    margin-left: -18px;
+}
+
+#content .TabOrganisasi {
+    
+    background-color: white;
+    width: 1110px;
+    height: 110px;
+    margin-left: 30px;
+    margin-top: 30px;
+    transition: all 500ms linear;
+}
+
+.formAdd label {
+    font-size: 13px;
+}
+
+.TabOrganisasi table {
     text-align: center;
-    margin-top: 50px;
+    color: #7E8DA4;
+}
+
+.TabOrganisasi button {
+    color: white;
+    font-size: 13px;
+}
+
+.TabOrganisasi .trash {
+    color: #8971D0;
+}
+
+#content .formAdd h6 {
+    margin: 20px 0px 0px 30px;
+    font-weight: 420;
+    color: #7E8DA4;
+}
+
+#content .form-group {
+    margin: 25px 0px 0px 30px;
+}
+
+#content .divide-row {
+    border-bottom: 1px solid lightgray;
+    width: 1050px;
+    margin: 13px 0px 0px 30px;
+}
+
+.col-form-label {
+    color: #7E8DA4;
 }
 
 /* ---------------------------------------------------
