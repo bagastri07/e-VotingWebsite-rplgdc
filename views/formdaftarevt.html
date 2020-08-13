@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+    <title>Form Daftar Event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/assets/css/formdaftarevt.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/formdaftarevt.css" />
+    <!-- Bootstrap & JS -->
+      <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="/assets/script/jquery.js"></script>
+      <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/assets/script/popper.js"></script>
+      <script type="text/javascript" src="/assets/navsidebar.js"></script>
+</head>
+<body>
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn">
+                        <img src="/assets/img/menu.png">
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" style="color:#7E8DA4;">
+                                <img src="/assets/img/superadmin.jpeg" style="height: 30px;" class="rounded-circle">
+                                Super Admin
+                            </li>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="headform">
+                    <h4>Form Pendaftaran</h4>
+                </div>
+                <div class="formevt">
+                    <form action="" method="">
+                        <h6>Form Pendaftaran Event</h6>
+                        <div class="divide-row"></div>
+                            <div class="form-group1 row">
+                                <label for="inputIDacara" class="col-sm-2 col-form-label">Id Acara</label>
+                                <div class="col-sm-8 IDacara">
+                                  <input type="text" class="form-control" id="inputIDAcara" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group2 row">
+                                <label for="inputNamaAcara" class="col-sm-2 col-form-label">Nama Acara</label>
+                                <div class="col-sm-8 Nmacara">
+                                  <input type="text" class="form-control" id="inputNamaAcara" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group3 row">
+                                <label for="inputBeginDate" class="col-sm-2 col-form-label">Tanggal Mulai</label>
+                                <div class="col-sm-4 beginDate">
+                                  <input type="date" class="form-control" id="inputBegindate" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group4 row">
+                                <label for="inputBeginTime" class="col-sm-2 col-form-label">Waktu Mulai</label>
+                                <div class="col-sm-4 beginTime">
+                                  <input type="time" class="form-control" id="inputBegintime" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group5 row">
+                                <label for="inputFinishDate" class="col-sm-2 col-form-label">Tanggal Berakhir</label>
+                                <div class="col-sm-4 finishDate">
+                                  <input type="date" class="form-control" id="inputFinishdate" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group6 row">
+                                <label for="inputFinishTime" class="col-sm-2 col-form-label">Waktu Berakhir</label>
+                                <div class="col-sm-4 finishTime">
+                                  <input type="time" class="form-control" id="inputFinishtime" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group7 row">
+                                <label for="uploadImage" class="col-sm-2 col-form-label">Logo Event</label>
+                                <button type="button" class="btn btn-sm" id="uploadLogoEvt">Upload Image</button>
+                            </div>
+                            <div class="form-group8 row">
+                                <button type="button" class="btn  btn-sm" id="cancelEvt">Cancel</button>
+                                <button type="button" class="btn btn-sm" id="submitEvt">Next</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+</body>
+</html>

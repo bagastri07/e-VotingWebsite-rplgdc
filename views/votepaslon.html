@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<head>
+    <title>E-voting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/assets/css/votepaslon.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/votepaslon.css" />
+    <!-- Bootstrap & JS -->
+      <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="/assets/script/jquery.js"></script>
+      <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/assets/script/popper.js"></script>
+</head>
+<body>
+                <div id="content">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <button type="button" id="sidebarCollapse" class="btn">
+                                <img src="/assets/img/menu.png">
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav ml-auto">
+                                    <li class="nav-item" style="color:#7E8DA4;">
+                                        <img src="/assets/img/superadmin.jpeg" style="height: 30px;" class="rounded-circle">
+                                        Super Admin
+                                    </li>
+                            </div>
+                        </div>
+                    </nav>
+                    <div id="paslonCon"class="container-fluid">
+                        <div class="p-3">
+                            <div class="head-title">
+                                    <h4>PEMILIHAN KETUA DAN WAKIL KETUA <br> HIMAIF 2022</h4>
+                            </div>
+                            <div class="shadow card" style="width: 25rem;">
+                                <img class="card-img-top" style="height: 110px; width: 110px;" src="/assets/img/paslon.png" alt="Card logo event">
+                                <div class="p-4 card-body">
+                                    <h1 class="card-title" style="text-align: center;">1</h1>
+                                    <div class="col-md-12">
+                                        <div class="form-row text-paslon1">
+                                        <div class="col-md-6">
+                                            <h6 class="card-text">Calon Ketua</h6>
+                                            <p class="card-text">Rizky Nazar</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="card-text">Calon Wakil Ketua</h6>
+                                            <p class="card-text">Alvaro Maldini</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-5 button-paslon">
+                                        <button type="submit" id="btnInfo1" data-toggle="modal" data-target="#myModalIn1" class="btn btn-visimisi"><ion-icon name="reader-outline"></ion-icon>Visi Misi</button>
+                                        <button type="submit" id="btnVote1" data-toggle="modal" data-target="#confirmVote" class="btn btn-vote"><ion-icon name="thumbs-up-outline"></ion-icon>Vote</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shadow card card2" style="width: 25rem;">
+                                <img class="card-img-top" style="height: 110px; width: 110px;" src="/assets/img/paslon.png" alt="Card logo event">
+                                <div class="p-4 card-body">
+                                    <h1 class="card-title" style="text-align: center;">2</h1>
+                                    <div class="col-md-12">
+                                        <div class="form-row text-paslon1">
+                                        <div class="col-md-6">
+                                            <h6 class="card-text">Calon Ketua</h6>
+                                            <p class="card-text">Isyana Sarasvati</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="card-text">Calon Wakil Ketua</h6>
+                                            <p class="card-text">Maudy Ayunda</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-5 button-paslon">
+                                        <button type="submit" id="btnInfo2" data-toggle="modal" data-target="#myModalIn2" class="btn btn-visimisi"><ion-icon name="reader-outline"></ion-icon>Visi Misi</button>
+                                        <button type="submit" id="btnVote2" data-toggle="modal" data-target="#confirmVote" class="btn btn-vote"><ion-icon name="thumbs-up-outline"></ion-icon>Vote</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                     <!-- Modal for Info Paslon1 -->
+     <div class="modal fade vm-modal" id="myModalIn1">
+        <div class="modal-dialog modal-m">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>
+                            Visi Misi
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="text-align: center;">PASANGAN CALON NOMOR URUT 1</p>
+                        <div class="col-md-3"> 
+                            <p>Visi</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Menjadikan HIMAIF yang bersatu, dan berkualitas demi tercapainya visi misi program
+                                studi informatika
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Misi</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>1. Mempererat hubungan sesama mahasiswa informatika.<br>
+                               2. Menjaga keharmonisan dan sinegritas kepada seluruh elemen
+                                yang ada di informatika.
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Modal for Info Paslon2 -->
+    <div class="modal fade vm-modal" id="myModalIn2">
+        <div class="modal-dialog modal-m">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>
+                            Visi Misi
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="text-align: center;">PASANGAN CALON NOMOR URUT 2</p>
+                        <div class="col-md-3"> 
+                            <p>Visi</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Menjadikan HIMAIF yang bersatu, dan berkualitas demi tercapainya visi misi program
+                                studi informatika
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Misi</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>1. Mempererat hubungan sesama mahasiswa informatika.<br>
+                               2. Menjaga keharmonisan dan sinegritas kepada seluruh elemen
+                                yang ada di informatika.
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+        </div>
+     </div>
+     
+     <!-- Modal for Confirm Voting-->
+     <div class="modal fade modalConfirm" id="confirmVote">
+        <div class="modal-dialog modal-s">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>
+                            Konfirmasi
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12"> 
+                            <p>Apakah Anda yakin untuk mengirimkan pilihan Anda?</p>
+                        </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-submitvote" data-dismiss="modal">Submit</button>
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+        </div>
+     </div>
+
+                    </div>
+                </div>
+            </div>
+                
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+</body>
+</html>
