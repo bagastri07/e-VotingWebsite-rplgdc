@@ -1,57 +1,52 @@
 <!DOCTYPE html>
 <head>
-    <title>Login Admin</title>
+    <title>E-voting</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="http://localhost:8888/assets/css/logadmin.css">
-    <link rel="stylesheet" media="screen" href="http://localhost:8888/assets/css/logadmin.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/logpemilih.css">
+    <link rel="stylesheet" media="screen" href="assets/css/logpemilih.css" />
     <!-- Bootstrap -->
-      <link rel="stylesheet" href="http://localhost:8888/assets/vendor/bootstrap/css/bootstrap.min.css">
-      <script type="text/javascript" src="http://localhost:8888/assets/script/jquery.js"></script>
-      <script type="text/javascript" src="http://localhost:8888/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="http://localhost:8888/assets/script/popper.js"></script>
+      <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="assets/script/jquery.js"></script>
+      <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="assets/script/popper.js"></script>
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="navbar-brand">
-                <img src="http://localhost:8888/assets/img/logofix.png">
+                <img src="assets/img/logofix.png">
             </div>
         </nav>
         <div class="container-fluid">
             <div class="row">
                 <div class="h-100 d-none d-lg-block col-lg-4">
                     <div class="imgcontainer">
-                            <img class="imglogin" src="http://localhost:8888/assets/img/login.png">
+                            <img class="imglogin" src="assets/img/login.png">
                     </div> 
                 
                 <div class="h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-8 backdrop">
                     <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9 login-container">
-                        <h5 class="mb-0 greet">
-                            <span class="d-block">Login Admin</span>
-                        </h5>
+                        <h4 class="mb-0 greet">
+                            <span class="d-block">Login Pemilih</span>
+                        </h4>
                         <h6 class="mt-3 greet2">
-                            Silahkan login terlebih dahulu.
+                            Silahkan login untuk melakukan voting.
                         </h6>
                         <div class="divider row"></div>
                         <div>
-                        <form action="/adm/auth/login" method="POST">
+                        <form action="" method="">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
-                                        <input name="NIM" id="exampleEmail" placeholder="NIM" type="text" class="form-control" required></div>
+                                        <input name="nim" id="exampleNim" placeholder="NIM" type="text" class="form-control"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
-                                        <input name="password" id="examplePassword" placeholder="Password" type="password" class="form-control" required></div>
+                                        <input name="password" id="exampleToken" placeholder="Token" type="password" class="form-control"></div>
                                 </div>
-                                <% if (messages.error) { %>
-                                    <div class="alert alert-danger" role="alert">
-                                        <%= messages.error %>
-                                    </div>
-                                  <% } %>
                             </div>
                         </div>
-                            <div class="divider row"></div>
+                             <div class="divider row"></div>
                             <div class="d-flex align-items-center">
                                 <div class="ml-auto">
                                     <button type="submit" class="btn" id="btnlogin">Login</button>
@@ -60,5 +55,5 @@
                         </form>
                     </div>
                 </div>
-            </div>
+             </div>
 </body>

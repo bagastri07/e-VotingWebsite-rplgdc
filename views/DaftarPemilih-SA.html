@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Super Admin</title>
+    <title>Daftar Pemilih</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="/assets/css/daftarpemilih.css">
@@ -12,42 +12,6 @@
       <script type="text/javascript" src="/assets/script/popper.js"></script>
 </head>
 <body>
-            <div class="wrapper">
-                <!-- Sidebar -->
-                <nav id="sidebar">
-                    <div class="sidebar-header">
-                        <img src="/assets/img/logofix.png" style="height: 50px;">
-                    </div>
-
-                    <ul class="list-unstyled components">
-                        <li>
-                            <a href="#"><ion-icon name="home-outline" class="col-1" style="height: 22px;"></ion-icon>Home</a>
-                        </li>
-                        <li class="active">
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><ion-icon name="clipboard-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Acara</a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#">Realtime Count</a>
-                                </li>
-                                <li>
-                                    <a href="#">Daftar Paslon</a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">Daftar Pemilih</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><ion-icon name="person-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Admin</a>
-                        </li>
-                        <li>
-                            <a href="#"><ion-icon name="people-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Organisasi</a>
-                        </li>
-                        <li>
-                            <a href="#"><ion-icon name="log-out-outline" class="col-1" style="height: 22px;"></ion-icon>Logout</a>
-                        </li>
-                    </ul>
-                </nav>
                 <div id="content">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <div class="container-fluid">
@@ -107,7 +71,7 @@
                                             <td>1301194501</td>
                                             <td>bagas.tri.w07@gmail.com</td>
                                             <td><button class="btn btn-success">Used</button></td>
-                                            <td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
+                                            <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                         </tr>
                                         <tr class="tr2">
                                             <td>2.</td>
@@ -115,7 +79,7 @@
                                             <td>130118342</td>
                                             <td>rahmafma@gmail.com</td>
                                             <td><button class="btn btn-warning">Unused</button></td>
-                                            <td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
+                                            <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                         </tr>
                                         <tr class="tr3">
                                             <td>3.</td>
@@ -123,39 +87,17 @@
                                             <td>1301184569</td>
                                             <td>rismajw@gmail.com</td>
                                             <td><button class="btn btn-success">Used</button></td>
-                                            <td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
+                                            <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                         </tr>
-                                        <% for(var i=0; i < voters.length; i++) { %>
-                                            <tr class="tr1">
-                                                <td><%= i + 1 %></td>
-                                                <td><%= voters[i].name %></td>
-                                                <td><%= voters[i].nim %></td>
-                                                <td><%= voters[i].email %></td>
-                                                <td><button class="btn btn-success">Used</button></td>
-                                                <td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
-                                            </tr>
-                                            <% } %> 
-                                            
-                                            
+                                        
                                     </tbody>
                             </table>
                         </div>
         
                     </div>
                 </div>
-            </div>
                 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-            $('#content').toggleClass('active');
-        });
-    
-    });
-    </script>
 
 </body>
 </html>
