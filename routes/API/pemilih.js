@@ -5,22 +5,21 @@ const bcrypt = require('bcrypt')
 
 const verifyToken = require('../../auth/verify-token')
 
-router.get('/pemilih', verifyToken.superadmin, (req, res) => {
-   let whereSql = ''
-    if (req.query.id) {
-        whereSql = "WHERE id_Mahasiswa = '"+ req.query.id +"' "
-    }
+router.get('/pemilih/:idevent', verifyToken.superadmin, (req, res) => {
 
     let queryString = `
-    SELECT data_mahasiswa.nama_mahasiswa AS nama,
-    data_pemilih.Id_Mahasiswa AS nim,
-    data_pemilih.Token AS Token,
-    data_pemilih.email AS email
-    FROM data_mahasiswa
-    RIGHT JOIN data_pemilih ON data_mahasiswa.id_Mahasiswa = data_pemilih.id_Mahasiswa
+    SELECT t1.nama_mahasiswa AS nama,
+    t2.Id_Mahasiswa AS nim,
+    Token AS Token,
+    status_token AS status_token,
+    email AS email
+    FROM data_mahasiswa AS t1
+    RIGHT JOIN data_pemilih AS t2
+    ON t1.id_Mahasiswa = t2.id_Mahasiswa
+    WHERE t2.id_acara=${req.params.idevent}
     `;
     
-    db.query(queryString + whereSql, [req.query.id], (err, results) => {
+    db.query(queryString, (err, results) => {
         if (err) {
             res.json({status: err})
         } else {
@@ -39,7 +38,7 @@ router.post('/pemilih', async (req, res) => {
             Token: hashedPassword,
             email: req.body.email,
             id_Mahasiswa: req.body.nim,
-            id_nama_Acara_Pemilu: req.body.acara
+            id_acara : req.body.acara
         }
         let quaryString = 'INSERT INTO data_pemilih SET ?'
         //console.log(Data)

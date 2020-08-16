@@ -176,7 +176,7 @@ ion-icon {
     
     background-color: white;
     width: 1110px;
-    height: 110px;
+    height: fit-content;
     margin-left: 30px;
     margin-top: 30px;
     transition: all 500ms linear;

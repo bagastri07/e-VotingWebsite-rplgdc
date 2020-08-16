@@ -34,7 +34,7 @@
                         </h6>
                         <div class="divider row"></div>
                         <div>
-                        <form action="" method="">
+                        <form action="/super/login" method="POST">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
@@ -44,6 +44,11 @@
                                     <div class="position-relative form-group">
                                         <input name="password" id="examplePassword" placeholder="Password" type="password" class="form-control"></div>
                                 </div>
+                                <% if (messages.error) { %>
+                                    <div class="alert alert-danger" role="alert">
+                                        <%= messages.error %>
+                                    </div>
+                                  <% } %>
                             </div>
                         </div>
                              <div class="divider row"></div>

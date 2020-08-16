@@ -1,0 +1,52 @@
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <img src="/assets/img/logofix.png" style="height: 50px;">
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/super/dashboard"><ion-icon name="home-outline" class="col-1" style="height: 22px;"></ion-icon>Home</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><ion-icon name="clipboard-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Acara</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="/super/events">Realtime Count</a>
+                    </li>
+                    <li>
+                        <a href="/super/events">Daftar Paslon</a>
+                    </li>
+                    <li>
+                        <a href="/super/events">Daftar Pemilih</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/super/admins"><ion-icon name="person-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Admin</a>
+            </li>
+            <li>
+                <a href="/super/organizations"><ion-icon name="people-outline" class="col-1" style="height: 22px;"></ion-icon>Daftar Organisasi</a>
+            </li>
+            <li>
+                <a href="/super/logout"><ion-icon name="log-out-outline" class="col-1" style="height: 22px;"></ion-icon>Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+$('#sidebarCollapse').on('click', function () {
+$('#sidebar').toggleClass('active');
+$('#carouselCon').toggleClass('active');
+$('#card-con').toggleClass('active');
+$('#btnVote').toggleClass('active');
+$('#realtime').toggleClass('active');
+});
+
+});
+</script>

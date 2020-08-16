@@ -11,7 +11,7 @@ const { compareSync } = require('bcrypt')
 initializePassport(passport)
 
 router.get('/', (req, res) => {
-    res.render('login-super-admin')
+    res.render('loginsuperadmin')
 })
 
 router.post('/login', passport.authenticate('super', { failureRedirect: '/super', failureFlash: true}), (req, res) => {
@@ -37,19 +37,19 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/dashboard', authMiddleware.role('superadmin', '/super') ,(req, res) => {
-    res.render('home-superadmin', {name: req.user.username})
+    res.render('Home-SA', {name: req.user.username})
 })
 
 router.get('/events', authMiddleware.role('superadmin', '/super'), (req, res) => {
-    res.render('events-superadmin')
+    res.render('DaftarEvent-SA')
 })
 
 router.get('/organizations', authMiddleware.role('superadmin', '/super'), (req, res) => {
-    res.render('organizations-superadmin')
+    res.render('DaftarOrganisasi-SA')
 })
 
 router.get('/admins', authMiddleware.role('superadmin', '/super'), (req, res) => {
-    res.render('admins-superadmin')
+    res.render('DaftarAdmin-SA')
 })
 
 router.get('/realtimecount', authMiddleware.role('superadmin', '/super'), (req, res) => {
@@ -77,11 +77,15 @@ router.get('/voters', authMiddleware.role('superadmin', '/super'), (req, res) =>
             voters.push(data)
           } 
         console.log(voters)
-        res.render('voters-superadmin', {voters: voters})
+        res.render('DaftarPemilih-SA', {voters: voters})
     })
     .catch((err) => {
         console.log(err)
     })
+})
+
+router.get('/addevent', authMiddleware.role('superadmin', '/super'), (req, res) => {
+    res.render('FormDaftarEvent-SA')
 })
 
 module.exports = router

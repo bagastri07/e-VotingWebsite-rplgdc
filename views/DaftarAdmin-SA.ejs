@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <title>Daftar Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/assets/css/daftaradmin.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/daftaradmin.css" />
+    <!-- Bootstrap & JS -->
+      <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="/assets/script/jquery.js"></script>
+      <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/assets/script/popper.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include ('Partials/SidebarHome-SA') %>
+        <div id="content">
+            <%- include ('Partials/Navbar-SA') %>
+            <div class="container-fluid">
+                <div class="col-md-12 adminsection">
+                    <h4>Daftar Admin</h4>
+                </div>
+                <table class="table table-responsive-md">
+                    <thead class="tabhead">
+                      <tr>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Event</th>
+                      </tr>
+                    </thead>
+                        <tbody>
+                            <tr class="tr1">
+                                <td>Iqbaal Diafakhri Ramadhan</td>
+                                <td>iqbaal.e@student.telkomuniversity.ac.id</td>
+                                <td>PERMIF</td>
+                            </tr>
+                            <tr class="tr2">
+                                <td>Tasya Kamila</td>
+                                <td>tasyakamila@student.telkomuniv.ac.id</td>
+                                <td>PERMIF</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+                
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+</body>
+</html>
