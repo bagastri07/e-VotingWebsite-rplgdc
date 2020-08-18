@@ -4,11 +4,32 @@ const db = require('../../database/conn')
 const passport = require('passport')
 const axios = require('axios')
 const authMiddleware = require('../../middleware/Auth')
+const multer = require('multer')
+const path = require('path')
 
 const initializePassport = require('../../controller/auth-superadmin-passport-config')
 const con = require('../../database/conn')
 const { compareSync } = require('bcrypt')
 initializePassport(passport)
+
+//set storage engine
+const storage = multer.diskStorage({
+    destination: path.join(__dirname + '../../../public/images'),
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        var ext = path.extname(file.originalname)
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+            return cb(new Error('Please Upload JPG, JPEG, or PNG file!'))
+        }
+        cb(null, true)
+    }
+}).single('logo-event')
 
 router.get('/', (req, res) => {
     res.render('loginsuperadmin')
@@ -60,23 +81,15 @@ router.get('/candidates', authMiddleware.role('superadmin', '/super'), (req, res
     res.render('candidates-superadmin')
 })
 
-router.get('/voters', authMiddleware.role('superadmin', '/super'), (req, res) => {
-    axios.get('http://localhost:8888/api/pemilih', {
+router.get('/voters/:id', authMiddleware.role('superadmin', '/super'), (req, res) => {
+    axios.get(`http://localhost:8888/api/pemilih/${req.params.id}`, {
         headers: {
             'Authorization': `Bearer ${req.cookies.token}`
         }
     })
     .then((results) => {
         var voters = []
-        for (i = 0; i < results.data.length; i++) {
-            var data = {
-                name: results.data[i].nama,
-                email: results.data[i].email,
-                nim: results.data[i].nim
-            }
-            voters.push(data)
-          } 
-        console.log(voters)
+        //console.log(results.data)
         res.render('DaftarPemilih-SA', {voters: voters})
     })
     .catch((err) => {
@@ -86,6 +99,23 @@ router.get('/voters', authMiddleware.role('superadmin', '/super'), (req, res) =>
 
 router.get('/addevent', authMiddleware.role('superadmin', '/super'), (req, res) => {
     res.render('FormDaftarEvent-SA')
+})
+
+router.get('/Up', (req, res) => {
+    res.render('uploadImg')
+})
+
+router.post('/up', (req, res) => {
+    upload(req, res, function(err) {
+        if (err) return res.send(err.message)
+
+        var sql = `UPDATE data_acara SET image = '${req.file.filename}' WHERE data_acara.id_acara = 2 `
+        db.query(sql, (err, ressults) => {
+            if (err) throw err
+            console.log(ressults)
+            res.send('Uploaded')
+        })
+    })
 })
 
 module.exports = router
