@@ -5,7 +5,7 @@ const db = require('../../database/conn')
 const initializePassport = require('../../controller/auth-admin-passport-config')
 
 router.get('/', (req, res) => {
-    res.render('login-pemilih')
+    res.render('loginpemilih')
 })
 
 router.get('/admin', (req, res) => {
