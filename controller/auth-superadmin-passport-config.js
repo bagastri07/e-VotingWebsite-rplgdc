@@ -44,10 +44,12 @@ function initialize(passport) {
 
       
     }
-    passport.use('super', new LocalStrategy({ usernameField: 'username' }, authenticateUser))
-    passport.serializeUser((user, done) => done(null, user.id))
+    passport.use('superadmin', new LocalStrategy({ usernameField: 'username' }, authenticateUser))
+    passport.serializeUser(function (user, done) {
+      if(user.role === 'superadmin') return done(null, user.id)
+    })
     passport.deserializeUser((id, done) => {
-      done(null, getSuperAdminById(id))
+      if(user.role === 'superadmin') return done(null, getSuperAdminById(id))
     })
   }
 

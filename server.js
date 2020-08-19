@@ -43,6 +43,7 @@ app.use('/', require('./routes/Pages/voter'))
 app.use('/super', require('./routes/Pages/superadmin'))
 app.use('/api', require('./routes/API/api-config'))
 app.use('/auth/sa', require('./auth/auth-superadmin-jwt-config'))
+app.use('/auth/voter', require('./auth/auth-voter-jwt-config'))
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port)

@@ -34,16 +34,21 @@
                         </h6>
                         <div class="divider row"></div>
                         <div>
-                        <form action="" method="">
+                        <form action="/login" method="POST">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
-                                        <input name="nim" id="exampleNim" placeholder="NIM" type="text" class="form-control"></div>
+                                        <input name="NIM" id="exampleNim" placeholder="NIM" type="text" class="form-control"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
-                                        <input name="password" id="exampleToken" placeholder="Token" type="password" class="form-control"></div>
+                                        <input name="token" id="exampleToken" placeholder="Token" type="password" class="form-control"></div>
                                 </div>
+                                <% if (messages.error) { %>
+                                    <div class="alert alert-danger" role="alert">
+                                        <%= messages.error %>
+                                    </div>
+                                  <% } %>
                             </div>
                         </div>
                              <div class="divider row"></div>

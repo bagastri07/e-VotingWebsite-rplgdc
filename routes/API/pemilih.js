@@ -40,6 +40,14 @@ router.post('/pemilih', async (req, res) => {
             id_Mahasiswa: req.body.nim,
             id_acara : req.body.acara
         }
+        // let SQL = `SELECT id_acara FROM data_Pemilih WHERE id_acara = ?`
+        // db.query(SQL, [data.id_acara], (err, result) => {
+        //     if (err) {
+        //         res.json({status: err})
+        //     } else {
+        //         if
+        //     }
+        // })
         let quaryString = 'INSERT INTO data_pemilih SET ?'
         //console.log(Data)
         db.query(quaryString, [Data], (err, result) => {

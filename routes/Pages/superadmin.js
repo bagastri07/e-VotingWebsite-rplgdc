@@ -7,9 +7,7 @@ const authMiddleware = require('../../middleware/Auth')
 const multer = require('multer')
 const path = require('path')
 
-const initializePassport = require('../../controller/auth-superadmin-passport-config')
-const con = require('../../database/conn')
-const { compareSync } = require('bcrypt')
+const initializePassport = require('../../controller/auth-passport-config')
 initializePassport(passport)
 
 //set storage engine
@@ -35,7 +33,7 @@ router.get('/', (req, res) => {
     res.render('loginsuperadmin')
 })
 
-router.post('/login', passport.authenticate('super', { failureRedirect: '/super', failureFlash: true}), (req, res) => {
+router.post('/login', passport.authenticate('superadmin', { failureRedirect: '/super', failureFlash: true}), (req, res) => {
     axios.post('http://localhost:8888/auth/sa/login', {
         username: req.user.username,
         password: req.user.password
@@ -54,6 +52,7 @@ router.post('/login', passport.authenticate('super', { failureRedirect: '/super'
 
 router.get('/logout', (req, res) => {
     req.logOut()
+    res.cookie('token', null, {maxAge: 1})
     res.redirect('/super')
 })
 
