@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../../database/conn')
 const verifyToken = require('../../auth/verify-token')
 
-router.get('/admin', verifyToken.superadmin, (req, res) => {
+router.get('/admin', verifyToken.role('superadmin'), (req, res) => {
     res.json({
         name : 'Bagas Tri Wibowo (Admin)'
     })

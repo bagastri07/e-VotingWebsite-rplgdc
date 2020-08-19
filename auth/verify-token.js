@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
+const con = require('../database/conn')
 
-exports.superadmin = (req, res, next) => {
+exports.role = (role) => {
+  return (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401)
@@ -11,31 +13,15 @@ exports.superadmin = (req, res, next) => {
         return res.sendStatus(403)
       }
       req.token = user
-      if (req.token.role == 'superadmin') {
+      if (req.token.role == role || role === 'ALL') {
         return next()
       } else{
         return res.sendStatus(403)
       }
     })
+  }
 }
 
-exports.voter = (req, res, next) => {
-  const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) return res.sendStatus(401)
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_JWT, (err, user) => {
-    if (err) {
-      //console.log(err)
-      return res.sendStatus(403)
-    }
-    req.token = user
-    if (req.token.role == 'voter') {
-      return next()
-    } else{
-      return res.sendStatus(403)
-    }
-  })
-}
 
 

@@ -4,16 +4,13 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const db = require('../database/conn')
 
-const getMahasiswaById = (id) => {
+function getUserByStudentId(NIM) {
     return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM data_pemilih WHERE id_Mahasiswa = ?', [id], (err, results) => {
-            if (err) {
-                return reject(err)
+        db.query('SELECT * FROM data_pemilih WHERE id_mahasiswa = ?', [NIM], (err, result) => {
+            if (result.length == 0) {
+                resolve(null)
             } else {
-                if (results.lenght < 0) {
-                    return resolve(null)
-                }
-                return resolve(results[0])
+                resolve(result)
             }
         })
     })
@@ -29,27 +26,30 @@ const getMahasiswaById = (id) => {
 router.post('/login', async (req, res) => {
     var nimVoter = req.body.nim
     var tokenVoter = req.body.token
-    var voter = await getMahasiswaById(nimVoter)
+    var voter = await getUserByStudentId(nimVoter)
 
     if (voter == null) {
         return res.json({auth: false, token: null})
     } else {
         try {
-            if (await bcrypt.compare(tokenVoter, voter.Token)) {
-                var token = jwt.sign({
-                    id: voter.id_Pemilih,
-                    role: 'voter',
-                    statusToken: voter.status_token,
-                    idMahasiswa: voter.id_Mahasiswa,
-                    idAcara: voter.id_acara
+            //console.log(voter)
+            for (let i = 0; i < voter.length; i++) {
+                if (await bcrypt.compare(tokenVoter, voter[i].Token)) {
+                    Data = voter[i]
+                    var token = jwt.sign({
+                        id: Data.id_Pemilih,
+                        role: 'voter',
+                        statusToken: Data.status_token,
+                        idMahasiswa: Data.id_Mahasiswa,
+                        idAcara: Data.id_acara
+                    }
+                    , process.env.ACCESS_TOKEN_JWT, {expiresIn: "2h"})
+                    return res.status(200).json({auth: true, token: token})
                 }
-                , process.env.ACCESS_TOKEN_JWT, {expiresIn: "2h"})
-                res.status(200).json({auth: true, token: token})
-            } else {
-                res.status(403).json({auth: false, token: null})
             }
+           // res.status(403).json({auth: false, token: null})
         } catch (error) {
-           return res.json({auth: false, token: null})
+           return res.json({auth: false, token: 'fuck'})
         }
     }
 })

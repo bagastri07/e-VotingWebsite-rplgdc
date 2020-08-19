@@ -29,19 +29,19 @@ const upload = multer({
     }
 }).single('logo-event')
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware.isLogin('/super/dashboard'), (req, res) => {
     res.render('loginsuperadmin')
 })
 
 router.post('/login', passport.authenticate('superadmin', { failureRedirect: '/super', failureFlash: true}), (req, res) => {
     axios.post('http://localhost:8888/auth/sa/login', {
-        username: req.user.username,
-        password: req.user.password
+        username: req.body.username,
+        password: req.body.password
       })
       .then(function (response) {
         //console.log(response.data);
         let token = response.data.token
-        req.user.password = null
+        // console.log(req.user)
         res.cookie('token', token, {httpOnly: true, maxAge: 2 * 60 * 60 * 1000}) 
         res.redirect('/super/dashboard')
       })
@@ -57,6 +57,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/dashboard', authMiddleware.role('superadmin', '/super') ,(req, res) => {
+    // console.log(req.user)
     res.render('Home-SA', {name: req.user.username})
 })
 

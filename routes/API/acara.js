@@ -24,7 +24,7 @@ const upload = multer({
     }
 }).single('logo-event')
 
-router.get('/acara', verifyToken.superadmin, (req, res) => {
+router.get('/acara', verifyToken.role('superadmin'), (req, res) => {
     let queryString = `
     SELECT *
     FROM data_acara
@@ -39,7 +39,23 @@ router.get('/acara', verifyToken.superadmin, (req, res) => {
     })
 })
 
-router.post('/acara', verifyToken.superadmin, (req, res) => {
+router.get('/acara/:id', verifyToken.role('ALL'), (req, res) => {
+    let queryString = `
+    SELECT *
+    FROM data_acara
+    WHERE id_acara = ?
+    `;
+    
+    db.query(queryString, [req.params.id], (err, results) => {
+        if (err) {
+            res.json({status: err})
+        } else {
+            res.json(results[0])
+        }
+    })
+})
+
+router.post('/acara', verifyToken.role('superadmin'), (req, res) => {
     upload(req, res, (err) => {
         if (err) throw err
 

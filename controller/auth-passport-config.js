@@ -21,7 +21,7 @@ function getUserByIdPemilih(id) {
                             email: result[0].email,
                             nama: result2[0].nama_Mahasiswa,
                             role: 'voter',
-                            Token: result[0].Token,
+                            status_Token: result[0].status_token,
                             id_mahasiswa: result[0].id_Mahasiswa,
                             id_acara: result[0].id_acara,
                             Id_Paslon_Pilihan: result[0].Id_Paslon_Pilihan
@@ -51,7 +51,6 @@ function getSuperAdminById(id) {
         let data = {
             id: admin.id,
             username: admin.username,
-            password: admin.password,
             role: 'superadmin'
         }
         return data
@@ -82,7 +81,16 @@ function initialize(passport) {
         try {
             for (let i = 0; i < user.length; i++) {
                 if (await bcrypt.compare(token, user[i].Token)) {
-                    return done(null, user[i])
+                    var data = {
+                        id: user[i].id_Pemilih,
+                        email: user[i].email,
+                        role: 'voter',
+                        status_Token: user[i].status_token,
+                        id_mahasiswa: user[i].id_Mahasiswa,
+                        id_acara: user[i].id_acara,
+                        Id_Paslon_Pilihan: user[i].Id_Paslon_Pilihan
+                    }
+                    return done(null, data)
                 }
             }
             return done(null, false, { message: 'Token Inccoret' })
@@ -99,20 +107,25 @@ function initialize(passport) {
         return done(null, false, { message: 'username incorrect' })
     } else {
         if (password == user.password) {
-          return done(null, user)
+            let dataUser = {
+                id: user.id,
+                username: user.username,
+                role: user.role
+            }
+            return done(null, dataUser)
         } else {
-          return done(null, false, {message: 'password incorrect'})
+            return done(null, false, {message: 'password incorrect'})
         }
   }
 
   
 }
     passport.use('superadmin', new LocalStrategy({ usernameField: 'username' }, authenticateUser2))
-    passport.use('voter' ,new LocalStrategy({ usernameField: 'NIM', passwordField: 'token' }, authenticateUser1))
+    passport.use('voter' , new LocalStrategy({ usernameField: 'NIM', passwordField: 'token' }, authenticateUser1))
     passport.serializeUser(function (user, done) {
         if(user.role !== 'superadmin') {
             let Voter = {
-                id: user.id_Pemilih,
+                id: user.id,
                 role: 'voter'
             }
             return done(null, Voter)
@@ -126,12 +139,12 @@ function initialize(passport) {
         } 
     })
     passport.deserializeUser( async (User, done) => {
-        if (User.role === 'superadmin') {
+        if (User.role == 'superadmin') {
             let user = await getSuperAdminById(User.id)
             return done(null, user)
         } 
 
-        if (User.role === 'voter') {
+        if (User.role == 'voter') {
             let user = await getUserByIdPemilih(User.id)
             return done(null, user)
         }

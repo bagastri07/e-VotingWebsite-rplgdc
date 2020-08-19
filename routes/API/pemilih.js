@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 const verifyToken = require('../../auth/verify-token')
 
-router.get('/pemilih/:idevent', verifyToken.superadmin, (req, res) => {
+router.get('/pemilih/:idevent', verifyToken.role('superadmin'), (req, res) => {
 
     let queryString = `
     SELECT t1.nama_mahasiswa AS nama,

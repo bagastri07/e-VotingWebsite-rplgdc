@@ -54,7 +54,7 @@ async function asyncForEach(array, callback) {
     }
 }
 
-router.get('/paslon/:idacara', verifyToken.superadmin, (req, res) => {
+router.get('/paslon/:idacara', verifyToken.role('ALL'), (req, res) => {
     let queryString = `
     SELECT
     *
@@ -95,7 +95,7 @@ router.get('/paslon/:idacara', verifyToken.superadmin, (req, res) => {
     })
 })
 
-router.post('/paslon', verifyToken.superadmin, (req, res) => {
+router.post('/paslon', verifyToken.role('superadmin'), (req, res) => {
     upload(req, res, (err) => {
         if (err) throw err
 
