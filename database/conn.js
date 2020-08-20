@@ -1,6 +1,7 @@
 const mysql = require('mysql')
 
 const db_config = {
+    // port: 8080,
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PWD,
