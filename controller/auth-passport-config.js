@@ -90,7 +90,11 @@ function initialize(passport) {
                         id_acara: user[i].id_acara,
                         Id_Paslon_Pilihan: user[i].Id_Paslon_Pilihan
                     }
-                    return done(null, data)
+                    if (data.status_Token === 'used') {
+                        return done (null, false, {message: 'Your Token is Expired'})
+                    } else {
+                        return done(null, data)
+                    }
                 }
             }
             return done(null, false, { message: 'Token Inccoret' })
