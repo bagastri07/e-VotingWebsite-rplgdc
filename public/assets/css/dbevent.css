@@ -143,9 +143,9 @@ ul.CTAs a {
     border: 1px solid lightgray;
     background-color: white;
     width: 640px;
-    height: 560px;
+    height: 640px;
     left: 690px;
-    margin-top: 85px;
+    margin-top: 55px;
     transition: all 500ms linear;
 }
 
@@ -159,6 +159,20 @@ ul.CTAs a {
 .container img {
     height: 250px;
     margin: 10px 0px -30px 160px;
+}
+
+.detailevt button {
+    display: inline-flex;
+    margin-left: -110px;
+    color: white;
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.detailevt .btnDelete {
+    margin-top: -63px;
+    margin-left: 330px;
+    width: 105px;
 }
 
 /* ---------------------------------------------------
