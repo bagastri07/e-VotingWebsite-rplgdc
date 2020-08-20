@@ -15,7 +15,6 @@ router.get('/', authMiddleware.isLogin('/dashboard'), (req, res) => {
 })
 
 router.post('/login', passport.authenticate('voter', { failureRedirect: '/', failureFlash: true}), (req, res) => {
-    console.log(req.body)
     axios.post('http://localhost:8888/auth/voter/login', {
         nim: req.body.NIM,
         token: req.body.token
