@@ -54,7 +54,13 @@ async function asyncForEach(array, callback) {
     }
 }
 
-router.get('/paslon/:idacara', verifyToken.role('ALL'), (req, res) => {
+router.get('/paslon', verifyToken.role('ALL'), (req, res) =>{
+    let queryString =`
+    SELECT * FROM data_paslon WHERE id_
+    `
+})
+
+router.get('/paslon-acara/:idacara', verifyToken.role('ALL'), (req, res) => {
     let queryString = `
     SELECT
     *
@@ -85,7 +91,10 @@ router.get('/paslon/:idacara', verifyToken.role('ALL'), (req, res) => {
                     id_paslon: element.id_Paslon,
                     ketua: ketua,
                     wakil: wakil,
-                    acara: acara
+                    acara: acara,
+                    Visi: element.Visi,
+                    Misi: element.Misi,
+                    image: element.image
                 })
                 
             })
@@ -100,20 +109,21 @@ router.post('/paslon', verifyToken.role('superadmin'), (req, res) => {
         if (err) throw err
 
         var data = {
-            Nama_Acara      : req.body.name,
+            id_ketua        : req.body.nim_ketua,
+            id_wakil        : req.body.nim_wakil,
             image           : req.file.filename,
-            Tanggal_Mulai   : req.body.tanggal_mulai,
-            Waktu_Mulai     : req.body.waktu_mulai,
-            Tanggal_Berakhir: req.body.tanggal_berakhir,
-            Waktu_Berakhir  : req.body.waktu_berakhir
+            No_Urut         : req.body.No_Urut,
+            Visi            : req.body.Visi,
+            Misi            : req.body.Misi,
+            id_acara        : req.body.id_acara
         }
-        let sql = `INSERT INTO data_acara SET ?`
+        let sql = `INSERT INTO data_paslon SET ?`
         db.query(sql, data, (err, results) => {
             if (err) {
                 res.json({status: err})
             } else {
                 res.json({
-                    Msg: `${data.Nama_Acara} was added to database`,
+                    Msg: `Paslon ${data.id_ketua} & ${data.id_wakil} was added to database`,
                     'row affected': results.affectedRows
                 })
             }
@@ -121,5 +131,63 @@ router.post('/paslon', verifyToken.role('superadmin'), (req, res) => {
     })
 })
 
+router.delete('/paslon/:id', verifyToken.role('superadmin'), (req, res) => {
+    let queryString = `DELETE FROM data_paslon WHERE id_Paslon = ?`
+    db.query(queryString, [req.params.id], (err, results) => {
+        if (err) {
+            res.json({
+                msg: err
+            })
+        } else {
+            res.json({
+                msg:'succes',
+                'affectedRow': results.affectedRows
+            })
+        }
+    })
+})
+
+//belum selesai
+router.put('/edit-paslon/:id', verifyToken.role('superadmin'), (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            res.json({msg: err})
+        } else {
+            let SQL
+            if (!req.file) {
+                SQL = ` 
+                UPDATE data_acara
+                SET Nama_Acara = '${req.body.nama_acara}'
+                , Tanggal_Mulai = '${req.body.tanggal_mulai}'
+                , Waktu_Mulai = '${req.body.waktu_mulai}'
+                , Tanggal_Berakhir = '${req.body.tanggal_berakhir}'
+                , Waktu_Berakhir = '${req.body.waktu_berakhir}'
+                WHERE id_acara = ?
+                `
+            } else {
+                SQL = ` 
+                UPDATE data_acara
+                SET Nama_Acara = '${req.body.nama_acara}'
+                , Tanggal_Mulai = '${req.body.tanggal_mulai}'
+                , Waktu_Mulai = '${req.body.waktu_mulai}'
+                , Tanggal_Berakhir = '${req.body.tanggal_berakhir}'
+                , Waktu_Berakhir = '${req.body.waktu_berakhir}'
+                , image = '${req.file.filename}'
+                WHERE id_acara = ?
+                `
+            }
+            db.query(SQL, [req.params.id], (err, results) => {
+                if (err) {
+                    res.json({msg: err})
+                } else {
+                    res.json({
+                        msg: 'update succes',
+                        'affectedRow': results.affectedRows
+                    })
+                }
+            })
+        }
+    })
+})
 
 module.exports = router

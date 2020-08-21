@@ -6,6 +6,8 @@ const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
 const con = require('../../database/conn')
+const { toASCII } = require('punycode')
+const { count } = require('console')
 
 //set storage engine
 const storage = multer.diskStorage({
@@ -148,5 +150,91 @@ router.put('/edit-acara/:id', verifyToken.role('superadmin'), (req, res) => {
         }
     })
 })
+
+router.get('/hitung-suara/:id', verifyToken.role('superadmin'), (req, res) => {
+    let SQL = `
+    SELECT id_Paslon, No_Urut FROM data_paslon WHERE id_acara = ?
+    `
+    db.query(SQL, [req.params.id], (err,results_paslon) => {
+        if(err){
+            res.json({msg: err})
+        } else {
+
+            let queryString = `
+            SELECT id_pemilih,
+            status_token,
+            Id_Paslon_Pilihan AS id_Paslon
+            FROM data_pemilih
+            WHERE id_acara = ?`
+            db.query(queryString, [req.params.id], async (err, results_vote) => {
+                if (err) {
+                    res.json({msg: err})
+                } else {
+
+                    const data = await hitungSuara(results_paslon, results_vote)
+            
+                    res.json({data: data})
+                }
+            })
+        }
+    })
+    
+})
+
+router.get('/suara-masuk/:id', verifyToken.role('superadmin'), (req, res) => {
+    let queryString = `SELECT status_token FROM data_pemilih WHERE id_acara = ?`
+    db.query(queryString, [req.params.id], (err, results) => {
+        if (err) {
+            res.json({msg:err})
+        } else {
+            let jumlahPemilih = results.length
+            let jumlahSuara = 0
+            for (let i = 0; i < results.length; i++) {
+                if (results[i].status_token === 'used') {
+                    jumlahSuara++
+                }
+            }
+            res.json({
+                jumlahPemilih: jumlahPemilih,
+                jumlahSuaraMasuk: jumlahSuara,
+                jumlahSuaraBelumTerpakai: jumlahSuara - jumlahSuara,
+                persentaseSuaraMasuk: (jumlahSuara/jumlahPemilih) * 100
+            })
+        }
+    })
+})
+
+function hitungSuara(dataPaslon, dataAcara) {
+    return new Promise((resolve, reject) => {
+         //Menghitung suara
+         const data = []
+         let suara
+         let totalSuara = 0
+         for (let i = 0; i < dataPaslon.length; i++) {
+             suara = 0
+             for (let j = 0; j < dataAcara.length; j++) {
+                 if (dataPaslon[i].id_Paslon === dataAcara[j].id_Paslon) {
+                     suara++
+                 }
+             }
+             totalSuara = totalSuara + suara
+             data.push({
+                id_Paslon: dataPaslon[i].id_Paslon,
+                No_Urut: dataPaslon[i].No_Urut,
+                jumlah_suara: suara,
+                persentase: null
+             })
+         }
+
+         //Menghitung persentase suara
+         for (let i = 0; i < data.length; i++) {
+            let persentase = (data[i].jumlah_suara / totalSuara) * 100
+            data[i].persentase = persentase
+        }
+         resolve(data)
+    })
+}
+
+
 
 module.exports = router

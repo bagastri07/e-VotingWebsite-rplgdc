@@ -8,10 +8,13 @@ const verifyToken = require('../../auth/verify-token')
 router.get('/pemilih/:idevent', verifyToken.role('superadmin'), (req, res) => {
 
     let queryString = `
-    SELECT t1.nama_mahasiswa AS nama,
+    SELECT 
+    t2.id_Pemilih AS id,
+    t1.nama_mahasiswa AS nama,
     t2.Id_Mahasiswa AS nim,
     Token AS Token,
     status_token AS status_token,
+    t2.Id_Paslon_Pilihan,
     email AS email
     FROM data_mahasiswa AS t1
     RIGHT JOIN data_pemilih AS t2
@@ -29,7 +32,7 @@ router.get('/pemilih/:idevent', verifyToken.role('superadmin'), (req, res) => {
     
 })
 
-router.post('/pemilih', async (req, res) => {
+router.post('/pemilih', verifyToken.role('superadmin'), async (req, res) => {
     try {
         var token = makeToken(5)
         console.log(token)
@@ -54,7 +57,7 @@ router.post('/pemilih', async (req, res) => {
             if (err) {
                 res.json({status: err})
             } else {
-                res.json({rowAffected: result.rowAffected, msg: 'post success'})
+                res.json({rowAffected: result.affectedRows, msg: 'post success'})
             }
         })
     } catch {
@@ -62,7 +65,7 @@ router.post('/pemilih', async (req, res) => {
     }
 })
 
-router.delete('/pemilih/:nim', (req, res) => {
+router.delete('/pemilih/:nim', verifyToken.role('superadmin'), (req, res) => {
     let nim = req.params.nim
     let queryString = 'DELETE From data_pemilih WHERE id_Mahasiswa  = ?'
     db.query(queryString, [nim], (err, results) => {
@@ -75,6 +78,32 @@ router.delete('/pemilih/:nim', (req, res) => {
             })
         }
 
+    })
+})
+
+router.post('/vote/:id', verifyToken.role('ALL'), (req, res) => {
+    let quaryString = `
+    UPDATE data_pemilih
+    SET status_token = 'used',
+    id_Paslon_Pilihan = '${req.query.id_paslon}'
+    WHERE id_Pemilih = '${req.params.id}'
+    `
+    db.query(quaryString, (err, results) => {
+        if(err){
+            res.json({msg: err})
+        } else {
+            if (results.affectedRows === 0) {
+                res.json({
+                    msg: 'Fail',
+                    'affectedRow': results.affectedRows
+                })
+            } else{
+                res.json({
+                    msg: 'Success',
+                    'affectedRow': results.affectedRows
+                })
+            }
+        }
     })
 })
 
