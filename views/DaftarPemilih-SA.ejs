@@ -53,7 +53,7 @@
                           </tr>
                         </thead>
                             <tbody>
-                                <tr class="tr1">
+                                <!-- <tr class="tr1">
                                     <td>1.</td>
                                     <td>Bagas Tri Wibowo</td>
                                     <td>1301194501</td>
@@ -76,7 +76,27 @@
                                     <td>rismajw@gmail.com</td>
                                     <td><button class="btn btn-success">Used</button></td>
                                     <form action=""><td><button type="submit" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
-                                </tr>
+                                </tr> -->
+
+                                
+                                
+                                <% for (let i = 0; i < voters.length; i++) { %>
+                                    <tr class="tr1">
+                                        <td><%= i + 1 %></td>
+                                        <td><%= voters[i].nama %></td>
+                                        <td><%= voters[i].nim %></td>
+                                        <td><%= voters[i].email %></td>
+                                        <% if (voters[i].status_token === "used") { %>
+                                            <td><button class="btn btn-success">Used</button></td>
+                                        <% } else { %>
+                                            <td><button class="btn btn-warning">Unused</button></td>
+                                        <% } %>
+                                        <form action=""><td><button type="submit" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
+                                    </tr>
+                                    
+                                <% } %>
+                             
+
                                 
                             </tbody>
                     </table>

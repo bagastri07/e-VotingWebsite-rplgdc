@@ -42,7 +42,7 @@ router.post('/login', passport.authenticate('superadmin', { failureRedirect: '/s
         //console.log(response.data);
         let token = response.data.token
         // console.log(req.user)
-        res.cookie('token', token, {httpOnly: false, maxAge: 2 * 60 * 60 * 1000}) 
+        res.cookie('token', token, {httpOnly: true, maxAge: 2 * 60 * 60 * 1000}) 
         res.redirect('/super/dashboard')
       })
       .catch(function (error) {
@@ -88,9 +88,9 @@ router.get('/voters/:id', authMiddleware.role('superadmin', '/super'), (req, res
         }
     })
     .then((results) => {
-        var voters = []
-        //console.log(results.data)
-        res.render('DaftarPemilih-SA', {voters: voters})
+        
+        // console.log(results.data)
+        res.render('DaftarPemilih-SA', {voters: results.data})
     })
     .catch((err) => {
         console.log(err)
