@@ -80,6 +80,67 @@
 
         
 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> -->
+    <script>
+        //event listener
+        document.getElementById('submitEvt').addEventListener('click', submit);
+        document.getElementById('cancelEvt').addEventListener('click', handleCancelEvt)
+
+        function handleSubmitEvt() {
+            //post
+            // e.preventDefault();
+
+            let name = document.getElementById('inputNamaAcara').value;
+            let tanggal_mulai = document.getElementById('inputBegindate').value;
+            let waktu_mulai = document.getElementById('inputBegintime').value;
+            let tanggal_berakhir = document.getElementById('inputFinishdate').value;
+            let waktu_berakhir = document.getElementById('inputFinishtime').value;
+            let logoevent = document.getElementById('imgUpload').value;
+
+            // console.log("cookie", document.cookie)
+            // Cookies.set('name', 'value');
+            // console.log(Cookies.get())
+            
+            // console.log(document.cookie.token)
+
+            fetch('http://localhost:8888/api/acara', {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                    'Accept' : 'application/json, text/plain, */*',
+                    'Content-type' : 'application/json',
+                    // 'Authorization': ``
+                },
+                body:JSON.stringify(
+                    {
+                        nama:name,
+                        tanggal_mulai:tanggal_mulai,
+                        waktu_mulai:waktu_mulai,
+                        tanggal_berakhir:tanggal_berakhir,
+                        waktu_berakhir:waktu_berakhir, 
+                        logoevent:logoevent
+                    })
+            })
+            .then((res) => res.text())
+            .then((data) => {
+                console.log("success")
+            })
+            .catch(function(err) {
+                 console.log(err);
+            })
+    }
+
+    function submit() {
+        handleSubmitEvt();
+    }
+
+    function handleCancelEvt() {
+            //cancel
+        console.log("canceled")
+    }
+</script>
 
 </body>
 </html>

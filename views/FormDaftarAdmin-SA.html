@@ -40,30 +40,30 @@
                             <div class="form-group1 row">
                                 <label for="inputIDacara" class="col-sm-2 col-form-label">NIM</label>
                                 <div class="col-sm-8 IDacara">
-                                  <input type="number" class="form-control" id="inputIDAcara" placeholder="">
+                                  <input type="number" class="form-control" id="inputNIM" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group2 row">
                                 <label for="inputNamaAcara" class="col-sm-2 col-form-label">Username</label>
                                 <div class="col-sm-8 Nmacara">
-                                  <input type="text" class="form-control" id="inputNamaAcara" placeholder="">
+                                  <input type="text" class="form-control" id="inputUsername" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group3 row">
                                 <label for="inputBeginDate" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-8 beginDate">
-                                  <input type="text" class="form-control" id="inputBegindate" placeholder="">
+                                  <input type="text" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group4 row">
                                 <label for="inputBeginTime" class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-8 beginTime">
-                                  <input type="password" class="form-control" id="inputBegintime" placeholder="">
+                                  <input type="password" class="form-control" id="inputPassword" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group5 row">
-                                <button type="button" class="btn btn-sm" id="prevBtn">Cancel</button>
-                                <button type="button" class="btn btn-sm" id="submitEvt">Submit</button>
+                                <button type="button" class="btn btn-sm" id="cancelBtn">Cancel</button>
+                                <button type="button" class="btn btn-sm" id="submitBtn">Submit</button>
                             </div>
                     </form>
                 </div>
@@ -71,6 +71,41 @@
         </div>
         
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script>
+         //event listener
+         document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+         document.getElementById('cancelBtn').addEventListener('click', handleCancel)
+
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            let nim = document.getElementById('inputNIM').value;
+            let username = document.getElementById('inputUsername').value;
+            let email = document.getElementById('inputEmail').value;
+            let password = document.getElementById('inputPassword').value;
+
+            var bearer 
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                    'Accept' : 'application/json, text/plain, */*',
+                    'Content-type' : 'application/json'
+                },
+                body:JSON.stringify({nim:nim, username:username, email:email, password:password})
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+            })
+
+        }
+
+        function handleCancel() {
+            console.log("canceled");
+        }
+    </script>
     
 </body>
 </html>

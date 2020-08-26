@@ -78,16 +78,16 @@
                                             <div id="idAdmin">1301193409</div>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="#"><button class="btn btn-success btnAdmin">Add Admin</button></a>
+                                            <a href="#"><button type="submit" class="btn btn-success btnAdmin" id="AddAdmin">Add Admin</button></a>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="#"><button class="btn btn-success btnPaslon">Add Paslon</button></a>
+                                            <a href="#"><button type="submit" class="btn btn-success btnPaslon" id="AddPaslon">Add Paslon</button></a>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="#"><button class="btn btn-warning btnUpdate">Update Acara</button></a>
+                                            <a href="#"><button type="submit" class="btn btn-warning btnUpdate" id="UpdateAcara">Update Acara</button></a>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="#"><button class="btn btn-danger btnDelete">Delete Acara</button></a>
+                                            <a href="#"><button type="submit" class="btn btn-danger btnDelete" id="delEvent">Delete Acara</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -98,6 +98,33 @@
 
                 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+        document.getElementById('AddAdmin').addEventListener('click', performAddEvt);
+        document.getElementById('AddPaslon').addEventListener('click', performAddPaslon);
+        document.getElementById('UpdateAcara').addEventListener('click', performUpdate);
+        document.getElementById('delEvent').addEventListener('click', performDelete);
+
+        function performAddEvt() {
+            //get
+            console.log("clicked")
+        }
+
+        function performAddPaslon() {
+            //get
+            console.log("clicked")
+        }
+
+        function performUpdate() {
+            //put 
+            console.log("clicked")
+        }
+
+        function performDelete() {
+            //delete
+            console.log("clicked")
+        }
+    </script>
 
 </body>
 </html>

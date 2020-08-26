@@ -54,11 +54,24 @@
                              <div class="divider row"></div>
                             <div class="d-flex align-items-center">
                                 <div class="ml-auto">
-                                    <button type="submit" class="btn" id="btnlogin">Login</button>
+                                    <button id="loginBtn" type="submit" class="btn" id="btnlogin">Login</button>
                                 </div>
                             </div>                           
                         </form>
                     </div>
                 </div>
              </div>
+
+        <script>
+            document.getElementById('loginBtn').addEventListener('click', handleLoginBtn);
+
+            function handleLoginBtn() {
+
+               let username = document.getElementById("exampleUname").value
+               let password = document.getElementById("examplePassword").value
+
+               localStorage.getItem('username')
+               localStorage.getItem('password')
+            }
+        </script>
 </body>

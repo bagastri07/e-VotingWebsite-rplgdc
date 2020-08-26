@@ -34,14 +34,14 @@
                                   <input type="text" class="form-control" id="inputJenis" placeholder="">
                                 </div>
                                 <div class="col-sm-1 addBtn">
-                                    <button type="button" class="btn" class="btn-label col-1"><ion-icon name="add"></ion-icon>Add Row</button>
+                                    <button type="button" class="btn" id="postRow" class="btn-label col-1"><ion-icon name="add"></ion-icon>Add Row</button>
                                 </div>
                             </div>
                     </form>
                 </div>
 
                 <div class="TabOrganisasi">
-                    <table class="table table-bordered table-responsive-md">
+                    <table id="tabs" class="table table-bordered table-responsive-md">
                         <thead class="tabhead">
                           <tr>
                             <th scope="col">No.</th>
@@ -55,7 +55,7 @@
                                     <td>1.</td>
                                     <td>HIMAIF</td>
                                     <td>Himpunan</td>
-                                    <td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
+                                    <td><button id="deleteRow" type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td>
                                 </tr>
                             </tbody>
                     </table>
@@ -66,5 +66,72 @@
                 
                 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+        document.getElementById('postRow').addEventListener('click', handleAddRowBtn);
+        document.getElementById('deleteRow').addEventListener('click', handleDeleteRow);
+
+        function handleAddRowOrg() {
+            // e.preventDefault();
+
+            let nama = document.getElementById('nmOrganisasi').value;
+            let jenis = document.getElementById('inputJenis').value;
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                    'Accept' : 'application/json, text/plain, */*',
+                    'Content-type' : 'application/json',
+                    // 'Authorization': document.cookie.token
+                },
+                body:JSON.stringify({nama:nama, jenis:jenis})
+            })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+
+        }
+
+        function getPosts() {
+            fetch('http://localhost:3003/blog')
+            .then((res) => res.json())
+            .then((data) => {
+                let output = `
+                    <thead class="tabhead">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jenis</th>
+                        <th scope="col">Action</th>
+                    </tr>`
+                data.forEach(function(post) {
+                    output += `
+                    <div>
+                        <tr>
+                        <td> ${post.id} </td>
+                        <td> ${post.nama} </td>
+                        <td> ${post.jenis} </td>
+                        <td> <button type='button' id="deleteRow" class='btn btn-light trash'><ion-icon name='trash-outline'></ion-icon></button></td>
+                        </tr>
+                    </div
+                    `;
+                });
+                document.getElementById('tabs').innerHTML = output;
+            })
+        }
+
+        function handleAddRowBtn() {
+            handleAddRowOrg();
+            getPosts();
+        }
+
+        function handleDeleteRow(id) {
+            fetch(`http://localhost:3003/blog/${id}`, {
+            method: 'delete',
+            })
+            .then(res => res.json()) // or res.json()
+            .then(res => console.log("deleted"))
+        }
+        
+    </script>
 </body>
 </html>

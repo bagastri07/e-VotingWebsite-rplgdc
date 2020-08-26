@@ -28,7 +28,7 @@ router.post('/login', passport.authenticate('voter', { failureRedirect: '/', fai
         if (req.user.status_token === 'used') {
             return res.send('You are not allowed to vote')
         }
-        res.cookie('token', token, {httpOnly: true, maxAge: 2 * 60 * 60 * 1000}) 
+        res.cookie('token', token, {httpOnly: false, maxAge: 2 * 60 * 60 * 1000}) 
         res.redirect('/dashboard')
       })
       .catch(function (error) {

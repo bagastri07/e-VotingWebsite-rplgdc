@@ -34,7 +34,7 @@
                                   <input type="text" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                                 <div class="col-sm-1 addBtn">
-                                    <button type="button" class="btn" class="btn-label col-1"><ion-icon name="add"></ion-icon>Add Row</button>
+                                    <button type="submit" class="btn" id="tambahPemilih" class="btn-label col-1"><ion-icon name="add"></ion-icon>Add Row</button>
                                 </div>
                             </div>
                     </form>
@@ -59,7 +59,7 @@
                                     <td>1301194501</td>
                                     <td>bagas.tri.w07@gmail.com</td>
                                     <td><button class="btn btn-success">Used</button></td>
-                                    <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
+                                    <form action=""><td><button type="submit" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                 </tr>
                                 <tr class="tr2">
                                     <td>2.</td>
@@ -67,7 +67,7 @@
                                     <td>130118342</td>
                                     <td>rahmafma@gmail.com</td>
                                     <td><button class="btn btn-warning">Unused</button></td>
-                                    <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
+                                    <form action=""><td><button type="submit" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                 </tr>
                                 <tr class="tr3">
                                     <td>3.</td>
@@ -75,7 +75,7 @@
                                     <td>1301184569</td>
                                     <td>rismajw@gmail.com</td>
                                     <td><button class="btn btn-success">Used</button></td>
-                                    <form action=""><td><button type="button" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
+                                    <form action=""><td><button type="submit" class="btn btn-light trash"><ion-icon name="trash-outline"></ion-icon></button></td></form>
                                 </tr>
                                 
                             </tbody>
@@ -88,6 +88,31 @@
                 
                 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+        document.getElementById('tambahPemilih').addEventListener('click', handleAddRowVoter);
+
+        function handleAddRowVoter(e) {
+            e.preventDefault();
+
+            let email = document.getElementById('inpuEmail').value;
+            // let acara = document.getElementById('inputEmail').value;
+            let nim = document.getElementById('inputNIM').value;
+
+            fetch('http://localhost:8888/api/pemilih', {
+                method: 'POST',
+                headers: {
+                    'Accept' : 'application/json, text/plain, */*',
+                    'Content-type' : 'application/json',
+                    'Authorization': document.cookie.token
+                },
+                body:JSON.stringify({NIM:nim, Email:email})
+            })
+            .then((res) => res.text())
+            .then((text) => console.log(text))
+
+        }
+    </script>
 
 </body>
 </html>

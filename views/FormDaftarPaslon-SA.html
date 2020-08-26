@@ -79,8 +79,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group8 row">
-                                        <button type="button" class="btn  btn-sm" id="cancelEvt">Cancel</button>
-                                        <button type="button" class="btn btn-sm" id="submitEvt">Submit</button>
+                                        <button type="button" class="btn  btn-sm" id="cancel">Cancel</button>
+                                        <button type="submit" class="btn btn-sm" id="submit">Submit</button>
                                     </div>
                             </form>
                         </div>
@@ -88,6 +88,44 @@
                 </div>
                 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+        //event listener
+        document.getElementById('submit').addEventListener('click', handleSubmitPaslon);
+        document.getElementById('cancel').addEventListener('click', handleCancelPaslon)
+
+        function handleSubmitPaslon(e) {
+            //post
+            e.preventDefault();
+
+            let idketua = document.getElementById('inputIDKetua').value;
+            let idwaketu = document.getElementById('inputIDWakil').value;
+            let idacara = document.getElementById('inputIDAcara').value;
+            let nourut = document.getElementById('inputnoAcara').value;
+            let visi = document.getElementById('inputVisi').value;
+            let misi = document.getElementById('inputMisi').value;
+            let fotopaslon = document.getElementById('imgUpload').value;
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                    'Accept' : 'application/json, text/plain, */*',
+                    'Content-type' : 'application/json'
+                },
+                body:JSON.stringify({idketua:idketua, idwaketu:idwaketu, idacara:idacara, nourut:nourut, Visi:visi, Misi:misi, FotoPaslon:fotopaslon})
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                // console.log("clicked")
+            })
+        }
+
+        function handleCancelPaslon() {
+            //delete
+            console.log("clicked")
+        }
+    </script>
     
 </body>
 </html>
