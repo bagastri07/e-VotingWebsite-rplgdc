@@ -45,6 +45,10 @@ app.use('/api', require('./routes/API/api-config'))
 app.use('/auth/sa', require('./auth/auth-superadmin-jwt-config'))
 app.use('/auth/voter', require('./auth/auth-voter-jwt-config'))
 
+app.use((req, res, next) => {
+    res.status(404).render('404')
+})
+
 app.listen(port, () => {
     console.log('Server is running on port: ' + port)
 })

@@ -4,6 +4,7 @@ const db = require('../../database/conn')
 const verifyToken = require('../../auth/verify-token')
 const multer = require('multer')
 const path = require('path')
+const { constants } = require('buffer')
 
 //set storage engine
 const storage = multer.diskStorage({
@@ -153,30 +154,23 @@ router.put('/edit-paslon/:id', verifyToken.role('superadmin'), (req, res) => {
         if (err) {
             res.json({msg: err})
         } else {
-            let SQL
-            if (!req.file) {
-                SQL = ` 
-                UPDATE data_acara
-                SET Nama_Acara = '${req.body.nama_acara}'
-                , Tanggal_Mulai = '${req.body.tanggal_mulai}'
-                , Waktu_Mulai = '${req.body.waktu_mulai}'
-                , Tanggal_Berakhir = '${req.body.tanggal_berakhir}'
-                , Waktu_Berakhir = '${req.body.waktu_berakhir}'
-                WHERE id_acara = ?
-                `
-            } else {
-                SQL = ` 
-                UPDATE data_acara
-                SET Nama_Acara = '${req.body.nama_acara}'
-                , Tanggal_Mulai = '${req.body.tanggal_mulai}'
-                , Waktu_Mulai = '${req.body.waktu_mulai}'
-                , Tanggal_Berakhir = '${req.body.tanggal_berakhir}'
-                , Waktu_Berakhir = '${req.body.waktu_berakhir}'
-                , image = '${req.file.filename}'
-                WHERE id_acara = ?
-                `
+            let SQL = `UPDATE data_paslon SET ? WHERE id_Paslon = '${req.params.id}'`
+            
+            var data = {
+                id_ketua        : req.body.nim_ketua,
+                id_wakil        : req.body.nim_wakil,
+                No_Urut         : req.body.No_Urut,
+                Visi            : req.body.Visi,
+                Misi            : req.body.Misi,
+                id_acara        : req.body.id_acara
             }
-            db.query(SQL, [req.params.id], (err, results) => {
+
+            if (req.file) {
+              data.image = req.file.filename
+            }
+
+
+            db.query(SQL, [data], (err, results) => {
                 if (err) {
                     res.json({msg: err})
                 } else {
